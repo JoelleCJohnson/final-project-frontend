@@ -23,12 +23,10 @@ export default function DisplayWishlist() {
                     <h2>Loading...</h2>
                     :
                     wishlist.map((item) => {
-
                             return (
-                                
                                 <li key={item.listid} className="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg">
-                                {/* When item isPurchased, disable its button */
-                /* JSON. parse the info to recieve it as an object? */}
+                                {/* When item isPurchased, disable its button
+                                JSON. parse the info to recieve it as an object? */}
                                 <div className="flex items-center">
                                     <input
                                         disabled=""
