@@ -22,18 +22,13 @@
     "email": "",
     "url": ""
   },
-  "contributors": [
-
-  ],
+  "contributors": [],
   "scripts": {
     "dev": "",
     "build": "next build",
     "test": ""
   },
   "dependencies": {
-
-  },
-  "devDependencies": {
-
+    "next": "^14.0.3"
   }
 }
