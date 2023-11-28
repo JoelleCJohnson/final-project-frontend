@@ -1,6 +1,6 @@
 
 import AddItem from '@/app/dashboard/AddItem'
-import DisplayWishlist from '@/app/dashboard/DisplayWishlist'
+import DisplayWishlist from '@/app/dashboard/DisplayWishList'
 
 export default function Dashboard(){
 

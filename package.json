@@ -1,9 +1,8 @@
 {
-  "name": "",
+  "name": "Joelle Johnson's Final Project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "license": "AGPL-version-3.0",
   "private": false,
   "engines": {
