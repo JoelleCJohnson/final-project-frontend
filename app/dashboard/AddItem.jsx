@@ -1,5 +1,5 @@
 "use client"
-import {ItemContext} from "@/context/listContext/ItemsContext"
+import {ItemContext} from "@/context/ItemsContext"
 import { useContext } from "react"
 
 export default function AddItem() {
@@ -14,7 +14,7 @@ export default function AddItem() {
             price: e.target.itemPrice.value
         }
 
-    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
+    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

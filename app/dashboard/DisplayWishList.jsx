@@ -1,7 +1,7 @@
 "use client"
 import { useContext, useEffect } from "react"
 import { Popover } from "flowbite"
-import { ItemContext } from "@/context/listContext/ItemsContext"
+import { ItemContext } from "@/context/ItemsContext"
 import ItemsCard from "./ItemsCard"
 import { useRouter } from "next/navigation"
 
@@ -10,7 +10,7 @@ export default function DisplayWishlist() {
     const { wishlist, setWishlist } = useContext(ItemContext)
 
     useEffect(() => {
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/')
+        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard')
             .then(res => res.json())
             .then(setWishlist)
             .catch(console.error)

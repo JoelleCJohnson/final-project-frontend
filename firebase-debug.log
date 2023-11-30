@@ -74,3 +74,32 @@
 [info] 
    Creating an optimized production build ...
 
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info] PageNotFoundError: Cannot find module for page: /favicon.ico
+    at getPagePath (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/require.js:94:15)
+    at requirePage (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/require.js:99:22)
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/load-components.js:59:84
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async loadComponentsImpl (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/load-components.js:59:26)
+    at async /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/build/utils.js:1077:32
+    at async Span.traceAsyncFn (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/trace/trace.js:140:20) {
+  code: 'ENOENT'
+}
+
+[info] 
+> Build error occurred
+
+[info] Error: Failed to collect page data for /favicon.ico
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/build/utils.js:1217:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  type: 'Error'
+}
+
+[debug] [2023-11-30T19:38:22.723Z] Error: ENOENT: no such file or directory, open '/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
