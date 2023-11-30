@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
         <ItemsContext>
           {children}
         </ItemsContext>
+        <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
       </body>
     </html>
   )
