@@ -18,7 +18,7 @@ export default function DisplayWishlist() {
 
     return (
         <section className="max-w-sm mx-auto flex flex-col items-center justify-center border bg-red-500 border-2 rounded-lg m-4 p-2 col-start-1 ">
-            <h2 className="border border-red-500 border-2 rounded-lg m-4 p-2 text-zinc-50">Your Wishlist</h2>
+            <h2 className="border border-red-600 border-2 rounded-lg m-4 p-2 text-zinc-50">Your Wishlist</h2>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
 
                 {!wishlist ?
