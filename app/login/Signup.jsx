@@ -12,6 +12,7 @@ export default function Signup() {
     const route = useRouter()
 
     const handleSignUp = (token) => {
+      console.log("handling signup")
         setToken(token.token)
         setLoggedIn(true)
         route.push('/dashboard')
@@ -22,19 +23,21 @@ export default function Signup() {
         //generate token
 
         e.preventDefault()
+        
         const formData = {
-            email: e.target.email2.value,
-            firstName: e.target.firstName.value,
-            lastName: e.target.lastName.value,
-            streetAddress: e.target.streetAddress.value,
-            city: e.target.city.value,
-            state: e.target.state.value,
-            zipCode: e.target.zipCode.value,
-            password: e.target.password2.value,
-            passCheck: e.target.repeat-password.value
+          email: e.target.email2.value,
+          firstName: e.target.firstName.value,
+          lastName: e.target.lastName.value,
+          streetAddress: e.target.streetAddress.value,
+          city: e.target.city.value,
+          state: e.target.state.value,
+          zipCode: e.target.zipCode.value,
+          password: e.target.password2.value,
+          passCheck: e.target.repeat-password.value
         }
-
-        if(formData.password === formData.passCheck){ 
+        
+        // if(formData.password === formData.passCheck){ 
+          console.log("handleFormSubmit")
           fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
             method: 'POST',
             headers: {
@@ -45,13 +48,7 @@ export default function Signup() {
           .then(res => res.json())
           .then(handleSignUp)
           .catch(alert)
-        } 
-        else {
-          return(
-            <h3> Please match the passwords</h3>
-          )
-        }
-
+        // } 
     }
 
   return (
