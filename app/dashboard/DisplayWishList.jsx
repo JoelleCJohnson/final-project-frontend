@@ -2,8 +2,6 @@
 import { useContext, useEffect } from "react"
 import { Popover } from "flowbite"
 import { ItemContext } from "@/context/ItemsContext"
-import ItemsCard from "./ItemsCard"
-import { useRouter } from "next/navigation"
 
 export default function DisplayWishlist() {
 

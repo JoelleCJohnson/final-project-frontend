@@ -6,7 +6,7 @@ export const UserContext = createContext(null)
 export default function UserProvider({ children }){
 
     const [ token, setToken ] = useState(null)
-    const [ loggedin, setLoggedIn ] = useState(false)
+    const [ loggedin, setLoggedIn ] = useState()
 
     const _setLoggedIn = (data) => {
         if(data){
