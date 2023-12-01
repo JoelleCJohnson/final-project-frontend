@@ -8,7 +8,8 @@ export default function Login() {
     const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext)
 
     return (
-        <form className="flex max-w-md flex-col gap-4">
+        <form className="flex max-w-md flex-col gap-4 m-4 bg-red-600 p-4 rounded-lg">
+            <h2 className='flex justify-center text-white'>Login:</h2>
             <div>
                 <div className="mb-2 block">
                     <Label htmlFor="email" value="Your email" />
@@ -26,7 +27,7 @@ export default function Login() {
                 <Label htmlFor="remember">Remember me</Label>
             </div>
 
-            <Button type="submit">Submit</Button>
+            <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300" type="submit">Submit</Button>
         </form>
     )
 }

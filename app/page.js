@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import Dashboard from './dashboard/page'
 import Signup from './login/Signup'
 import UserProvider from '@/context/UserContext'
+import LoginPage from './login/page'
 
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
     <UserProvider>
       <main className='bg-white'>
         <Header />
-        <Signup />
+        <LoginPage />
         {/* <Footer /> */}
       </main>
     </UserProvider>
