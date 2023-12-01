@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Dashboard from './dashboard/page'
-import Signup from './signup/Signup'
+import Signup from './login/Signup'
 import UserProvider from '@/context/UserContext'
 
 

@@ -1,20 +1,19 @@
 'use client'
-
 import { useContext } from "react"
-import { userContext } from '@/context/UserContext';
+import { UserContext } from '@/context/UserContext';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 
 export default function Signup() {
 
-    const { setToken, setLoggedIn } = useContext(userContext)
+    const { setToken, setLoggedIn } = useContext(UserContext)
 
     const route = useRouter()
 
     const handleSignUp = (token) => {
         setToken(token.token)
-        localStorage.setItem('login', true)
+        setLoggedIn(true)
         route.push('/dashboard')
     }
 
@@ -54,7 +53,7 @@ export default function Signup() {
         <div className="mb-2 block">
           <Label htmlFor="email2" value="Your email" />
         </div>
-        <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
+        <TextInput id="email2" type="email" placeholder="name@email.com" required shadow />
       </div>
 
       <div>

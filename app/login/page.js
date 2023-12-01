@@ -1,7 +1,13 @@
-import Login from "./Login"
+'use client'
+import Signup from "./Signup";
+import Login from "./Login";
 
-export default function Login(){
-    return(
-        <Login />
+export default function LoginPage() {
+
+    return (
+        <section className="flex flex-row">
+            <Signup />
+            <Login />
+        </section>
     )
 }
