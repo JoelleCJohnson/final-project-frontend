@@ -7,52 +7,45 @@ import { useRouter } from "next/navigation";
 
 export default function Signup() {
 
-    const { setToken, setLoggedIn } = useContext(UserContext)
+  const { setToken, setLoggedIn } = useContext(UserContext)
 
-    const route = useRouter()
+  const route = useRouter()
 
-    const handleSignUp = (token) => {
-        setToken(token.token)
-        setLoggedIn(true)
-        route.push('/dashboard')
+  const handleSignUp = (token) => {
+    console.log("handling signup")
+    setToken(token.token)
+    setLoggedIn(true)
+    route.push('/dashboard')
+  }
+
+  const handleFormSubmit = (e) => {
+
+    e.preventDefault()
+
+    const formData = {
+      email: e.target.email2.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      streetAddress: e.target.streetAddress.value,
+      city: e.target.city.value,
+      state: e.target.state.value,
+      zipCode: e.target.zipCode.value,
+      password: e.target.password2.value,
+      passCheck: e.target.repeat - password.value
     }
 
-    const handleFormSubmit = (e) => {
-
-        //generate token
-
-        e.preventDefault()
-        const formData = {
-            email: e.target.email2.value,
-            firstName: e.target.firstName.value,
-            lastName: e.target.lastName.value,
-            streetAddress: e.target.streetAddress.value,
-            city: e.target.city.value,
-            state: e.target.state.value,
-            zipCode: e.target.zipCode.value,
-            password: e.target.password2.value,
-            passCheck: e.target.repeat-password.value
-        }
-
-        if(formData.password === formData.passCheck){ 
-          fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          })
-          .then(res => res.json())
-          .then(handleSignUp)
-          .catch(alert)
-        } 
-        else {
-          return(
-            <h3> Please match the passwords</h3>
-          )
-        }
-
-    }
+    console.log("handleFormSubmit")
+    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json())
+      .then(handleSignUp)
+      .catch(alert)
+  }
 
   return (
     <form className="flex max-w-md flex-col flex-2 gap-4 m-4 p-4 rounded-lg bg-red-600" onSubmit={handleFormSubmit}>
