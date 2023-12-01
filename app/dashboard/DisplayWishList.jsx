@@ -5,7 +5,7 @@ import { ItemContext } from "@/context/ItemsContext"
 
 export default function DisplayWishlist() {
 
-    const { wishlist, setWishlist } = useContext(ItemContext)
+    const { wishlist, setWishlist } = useContext(ItemContext) 
 
     useEffect(() => {
         fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard')

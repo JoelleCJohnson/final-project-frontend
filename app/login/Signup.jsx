@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function Signup() {
 
-  const { setToken, setLoggedIn } = useContext(UserContext)
+  const { setToken, setLoggedIn } = useContext(UserContext) || {}
 
   const route = useRouter()
 

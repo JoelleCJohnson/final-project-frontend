@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
-    const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext)
+    const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext) || {}
     const [ error, setError ] = useState(null)
 
     const route = useRouter()
