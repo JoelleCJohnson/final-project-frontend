@@ -1,16 +1,21 @@
 'use client'
 
 import { useContext } from "react"
-import { userContext } from '@/context/context/UserContext';
+import { userContext } from '@/context/UserContext';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
-    const { loggedin, token, setToken, setLoggedIn } = useContext(userContext)
+
+    const { setToken, setLoggedIn } = useContext(userContext)
+
+    const route = useRouter()
 
     const handleSignUp = (token) => {
         setToken(token.token)
-        localStorage.setItem('login', setLoggedIn(true))
+        localStorage.setItem('login', true)
+        route.push('/dashboard')
     }
 
     const handleFormSubmit = (e) => {
