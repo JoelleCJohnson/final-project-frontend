@@ -1,6 +1,5 @@
 "use client"
 import { useContext, useEffect } from "react"
-import { Popover } from "flowbite"
 import { ItemContext } from "@/context/ItemsContext"
 
 export default function DisplayWishlist() {
