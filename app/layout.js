@@ -12,11 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* //UserContext */}
-        <ItemsContext>
-          {children}
-        </ItemsContext>
+      <body className={inter.className} >
+          <ItemsContext>
+            {children}
+          </ItemsContext>
         <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
       </body>
     </html>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export default function Login() {
 
     const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext) || {}
-    const [ error, setError ] = useState(null)
+    const [error, setError] = useState(null)
 
     const route = useRouter()
 
@@ -16,10 +16,10 @@ export default function Login() {
         //     setError(token.message)
         //     return
         // }
-          setToken(token.token)
-          setError()
-          route.push('/dashboard')
-      }
+        setToken(token)
+        setError()
+        route.push('/dashboard')
+    }
 
     const handleFormSubmit = (e) => {
 
@@ -30,13 +30,13 @@ export default function Login() {
             password: e.target.password.value
         }
 
-         fetch('https://holiday-wishlist-jj.ue.r.appspot.com/login', {
+        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/login', {
             method: 'POST',
             headers: {
-              'Content-type': 'application/json',
+                'Content-type': 'application/json',
             },
             body: JSON.stringify(formData)
-         })
+        })
             .then(res => res.json())
             .then(handleLogin)
             .catch(console.error)
@@ -44,29 +44,36 @@ export default function Login() {
     }
 
     return (
-        <form className="flex max-w-md flex-col gap-4 m-4 bg-red-600 p-4 rounded-lg" onSubmit={handleFormSubmit}>
-            <h2 className='flex justify-center text-white'>Login:</h2>
-
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="email" value="Your email" />
+        <>
+            <form className='mx-auto mb-0 mt-8 max-w-md space-y-4' onSubmit={handleFormSubmit}>
+                <div className='mx-auto max-w-lg text-center'>
+                    <h2 className='text-2xl font-bold sm:text-3xl'>Login:</h2>
                 </div>
-                <TextInput id="email" type="email" placeholder="name@email.com" required />
-            </div>
 
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="password" value="Your password" />
+                <div>
+                    <div className='mb-2 block'>
+                        <Label htmlFor='email' value='Your email' />
+                    </div>
+                    <TextInput id='email' type='email' placeholder='name@email.com' required />
                 </div>
-                <TextInput id="password" type="password" required />
-            </div>
 
-            <div className="flex items-center gap-2">
-                <Checkbox id="remember" />
-                <Label htmlFor="remember">Remember me</Label>
-            </div>
+                <div>
+                    <div className='mb-2 block'>
+                        <Label htmlFor='password' value='Your password' />
+                    </div>
+                    <TextInput id='password' type='password' required />
+                </div>
 
-            <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300" type="submit">Submit</Button>
-        </form>
+                <div className='flex items-center gap-2'>
+                    <Checkbox id='remember' />
+                    <Label htmlFor='remember'>Remember me</Label>
+                </div>
+
+                <Button className='inline-block rounded-lg bg-red-600 px-32 md:px-48 py-3 text-sm font-medium text-zinc-50 hover:bg-green-100' type='submit'>Submit</Button>
+
+                <p> Don't have an account? <a href='/signup'>Sign up</a>
+                </p>
+            </form>
+        </>
     )
 }
