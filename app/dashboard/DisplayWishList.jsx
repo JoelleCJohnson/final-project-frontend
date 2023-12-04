@@ -1,10 +1,15 @@
 "use client"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ItemContext } from "@/context/ItemsContext"
+import { useRouter } from "next/navigation"
 
 export default function DisplayWishlist() {
+    const [show, setShow] = useState(false)
+    const [itemDetails, setItemDetails] = useState()
 
-    const { wishlist, setWishlist } = useContext(ItemContext) 
+    const { wishlist, setWishlist } = useContext(ItemContext)
+
+    const route = useRouter()
 
     useEffect(() => {
         fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard')
@@ -12,6 +17,35 @@ export default function DisplayWishlist() {
             .then(setWishlist)
             .catch(console.error)
     }, [])
+
+
+    const showItemCard = (thisItem) => {
+        if (show === true) {
+            setShow(false)
+        }
+        else {
+            setShow(true)
+        }
+        setItemDetails(thisItem)
+    }
+
+    const handlePurchase = (item) => {
+        const itemData = {
+            id: item.listid
+        }
+
+        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'mode': 'no-cors',
+            },
+            body: JSON.stringify(itemData)
+        })
+            .then(res => res.json())
+            .then(setWishlist)
+            .catch(console.error)
+    }
 
     return (
         <section className="max-w-sm mx-auto flex flex-col items-center justify-center border bg-red-600 border-2 rounded-lg m-4 p-2 col-start-1 ">
@@ -22,19 +56,30 @@ export default function DisplayWishlist() {
                     <h2>Loading...</h2>
                     :
                     wishlist.map((item) => {
-                        return (
-                            <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg">
-                                <h3 className="text-center" >{item.itemname}</h3>
-                                <div className="block">
-                                    <p className="text-center"> Price:   ${item.itemprice}</p>
-                                    <a href={`${item.itemlink}`} className="flex justify-center text-blue-500">Purchase</a>
-                                    <div className="text-center border border-1 border-gray-100 flex flex-row">
-                                        <p className="text-xs justify-center"> Purchased?</p>
-                                        <button onClick={() => { item.ispurchased = true }} className="border bg-red-600 text-white rounded-lg p-1">Click here</button>
-                                    </div>
-                                </div>
-                            </li>
-                        )
+                        const thisItem = item
+                        if (item.ispurchased === false) {
+                            return (
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>
+                                    <h3 className="text-center" >{item.itemname}</h3>
+                                    {show &&
+                                        <div className="block">
+                                            <p className="text-center"> Price:   ${item.itemprice}</p>
+                                            <a href={`${item.itemlink}`} className="flex justify-center text-blue-500">Purchase</a>
+                                            <p>
+                                                Already purchased?<button className="flex justify-center" onClick={() => handlePurchase(item)}>click here!</button>
+                                            </p>
+                                        </div>
+                                    }
+                                </li>
+                            )
+                        }
+                        else{
+                            return(
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-400 text-zinc-200" onClick={() => showItemCard(thisItem)}>
+                                    <h3 className="text-center" >{item.itemname}</h3>
+                                </li> 
+                            )
+                        }
                     })
                 }
             </ul>

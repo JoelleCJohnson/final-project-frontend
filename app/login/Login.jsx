@@ -12,10 +12,10 @@ export default function Login() {
     const route = useRouter()
 
     const handleLogin = (token) => {
-        // if(token.message){
-        //     setError(token.message)
-        //     return
-        // }
+        if(token.message){
+            setError(token.message)
+            return
+        }
         setToken(token)
         setError()
         route.push('/dashboard')
