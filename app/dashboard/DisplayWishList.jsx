@@ -47,6 +47,23 @@ export default function DisplayWishlist() {
             .catch(console.error)
     }
 
+    const deleteButton = (item) => {
+        const deleteItem = {
+            id: item.listid
+        }
+        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(deleteItem)
+        })
+            .then(res => res.json())
+            .then(setWishlist)
+            .catch(console.error)
+
+    }
+
     return (
         <section className="max-w-sm mx-auto flex flex-col items-center justify-center border bg-red-600 border-2 rounded-lg m-4 p-2 col-start-1 ">
             <h2 className="border border-red-600 border-2 rounded-lg m-4 p-2 text-zinc-50">Your Wishlist</h2>
@@ -59,25 +76,30 @@ export default function DisplayWishlist() {
                         const thisItem = item
                         if (item.ispurchased === false) {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>
-                                    <h3 className="text-center" >{item.itemname}</h3>
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>      
+                                        <h3 className="text-center" >{item.itemname} </h3>
+
                                     {show &&
                                         <div className="block">
                                             <p className="text-center"> Price:   ${item.itemprice}</p>
                                             <a href={`${item.itemlink}`} className="flex justify-center text-blue-500">Purchase</a>
                                             <p>
-                                                Already purchased?<button className="flex justify-center" onClick={() => handlePurchase(item)}>click here!</button>
+                                                Already purchased?<button className="flex justify-center text-blue-600" onClick={() => handlePurchase(item)}>click here!</button>
                                             </p>
+                                        <button className=" px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
                                         </div>
                                     }
                                 </li>
                             )
                         }
-                        else{
-                            return(
+                        else {
+                            return (
                                 <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-400 text-zinc-200" onClick={() => showItemCard(thisItem)}>
                                     <h3 className="text-center" >{item.itemname}</h3>
-                                </li> 
+                                    {show &&
+                                        <button className="px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
+                                    }
+                                </li>
                             )
                         }
                     })

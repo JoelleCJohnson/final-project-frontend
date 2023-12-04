@@ -29,12 +29,11 @@ export default function AddItem() {
     }
 
     return (
-        <form onSubmit={handleAddItem}
-        className="max-w-sm mx-auto flex flex-col items-center border bg-red-600 border-2 rounded-lg m-4 p-2 ">
-            <h2 className="border border-red-600 border-2 rounded-lg m-4 p-2 text-zinc-50"> Add an Item to Your Wishlist:</h2>
+        <form onSubmit={handleAddItem} className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4">
+            <h2 className="flex text-center text-2xl font-bold sm:text-3xl"> Add an Item to Your Wishlist:</h2>
             <label
                 htmlFor="itemName"
-                className="block mb-2 text-sm font-medium text-gray-900 text-center p-2"
+                className="block mb-2 text-sm font-medium text-gray-900 text-center "
             >
                 Item Name:
             </label>
@@ -50,7 +49,7 @@ export default function AddItem() {
                 htmlFor="itemLink"
                 className="block mb-2 text-sm font-medium text-gray-900 text-center m-1 p-2"
             >
-                Item Link(Links can be up to 500 characters. To shorten your link, click <a href="https://www.shorturl.at" className="text-blue-700">here</a>):
+                Item Link (Links can be up to 500 characters. To shorten your link, click <a href="https://www.shorturl.at" className="text-blue-700">here</a>):
             </label>
             <input
                 type="text"
@@ -77,7 +76,7 @@ export default function AddItem() {
             
             <button
                 type="submit"
-                className="focus:outline-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 m-2"
+                className="focus:outline-none text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 m-2 p-4"
             >
                 Add to Wishlist
             </button>
