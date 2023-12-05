@@ -31,7 +31,7 @@ export default function Signup() {
       state: e.target.state.value,
       zipCode: e.target.zipCode.value,
       password: e.target.password2.value,
-      passCheck: e.target.repeat - password.value
+      passCheck: e.target.repeat-password.value
     }
 
     console.log("handleFormSubmit")
