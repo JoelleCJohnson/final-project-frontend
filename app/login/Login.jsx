@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
-    const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext)
+    const { setToken } = useContext(UserContext)
     const [error, setError] = useState(null)
 
     const route = useRouter()
@@ -16,7 +16,7 @@ export default function Login() {
             setError(token.message)
             return
         }
-        setToken(token)
+        setToken(token.token)
         setError()
         route.push('/dashboard')
     }

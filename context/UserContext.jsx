@@ -6,25 +6,20 @@ export const UserContext = createContext(null)
 export default function UserProvider({ children }){
 
     const [ token, setToken ] = useState()
-    const [ loggedin, setLoggedIn ] = useState()
 
-    const _setLoggedIn = (data) => {
+    const _setToken = (data) => {
         if(data){
-            sessionStorage.setItem("user", JSON.stringify(data))
+            sessionStorage.setItem("token", data)
         }
         else{
-            sessionStorage.removeItem("user")
+            sessionStorage.removeItem("token")
         }
-        setLoggedIn(data)
-    }
-
-    const _setToken = (token) => {
-        setToken(token.token)
+        setToken(data)
     }
 
     
     return(
-        <UserContext.Provider value={{ token, setToken, loggedin, setLoggedIn: _setLoggedIn }} >
+        <UserContext.Provider value={{ token, setToken: _setToken }} >
             {children}
         </UserContext.Provider>
     )

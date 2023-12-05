@@ -2,21 +2,34 @@
 import { useContext, useEffect, useState } from "react"
 import { ItemContext } from "@/context/ItemsContext"
 import { useRouter } from "next/navigation"
+import { UserContext } from "@/context/UserContext"
 
 export default function DisplayWishlist() {
     const [show, setShow] = useState(false)
     const [itemDetails, setItemDetails] = useState()
 
     const { wishlist, setWishlist } = useContext(ItemContext)
+    const { token } = useContext(UserContext)
 
     const route = useRouter()
 
+    console.log(token)
     useEffect(() => {
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard')
+        if(!token) return
+        fetch(
+            // 'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
+            'http://localhost:3001/dashboard'
+            ,{
+            method :'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token
+            }
+        })
             .then(res => res.json())
             .then(setWishlist)
             .catch(console.error)
-    }, [])
+    }, [token])
 
 
     const showItemCard = (thisItem) => {
@@ -54,7 +67,8 @@ export default function DisplayWishlist() {
         fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
             method: "DELETE",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                Authorization: token
             },
             body: JSON.stringify(deleteItem)
         })

@@ -4,25 +4,27 @@ import { usePathname, useRouter } from "next/navigation"
 import { useContext, useEffect } from "react"
 
 export default function CheckAuth(){
-    const {loggedIn, setLoggedIn, token, setToken } = useContext(UserContext)
+    const { token, setToken } = useContext(UserContext)
 
     const router = useRouter()
     const pathname = usePathname()
 
     useEffect(()=> {
-        if(!user && pathname.startsWith('/dashboard')){
-            const _user = sessionStorage.getItem('user')
-            if(_user) {
-                setLoggedIn(JSON.parse(_user))
+        if(!token && pathname.startsWith('/dashboard')){
+            console.log("Checking token in session storage...")
+            const _token = sessionStorage.getItem('token')
+            console.log(_token)
+            if(_token) {
+                setToken(_token)
             } 
             else{
                 router.push('/signup')
             }
         }
-        if(user && pathname.startsWith('/login')){
+        if(token && !pathname.startsWith('/dashboard')){
             router.push('/dashboard')
         }
-    }, [user, pathname])
+    }, [token, pathname])
 
     return null
 }

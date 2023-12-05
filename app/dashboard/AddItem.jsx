@@ -19,6 +19,7 @@ export default function AddItem() {
             headers: {
                 'Content-Type': 'application/json',
                 'mode': 'no-cors',
+                Authorization: token
             },
             body: JSON.stringify(formData),
         })
