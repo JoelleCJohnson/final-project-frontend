@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function Signup() {
 
-  const { setToken, setLoggedIn } = useContext(UserContext) || {}
+  const { setToken, setLoggedIn } = useContext(UserContext) 
 
   const route = useRouter()
 
@@ -30,15 +30,18 @@ export default function Signup() {
       city: e.target.city.value,
       state: e.target.state.value,
       zipCode: e.target.zipCode.value,
-      password: e.target.password2.value,
-      passCheck: e.target.repeat-password.value
+      password: e.target.password2.value
+      // passCheck: e.target.repeat-password.value
     }
 
-    console.log("handleFormSubmit")
-    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
+    console.log(formData)
+    fetch(
+      'https://holiday-wishlist-jj.ue.r.appspot.com/signup'
+      // 'http://localhost:3001/signup'
+      , {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
+        'Content-type': 'application/json'
       },
       body: JSON.stringify(formData)
     })

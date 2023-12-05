@@ -1,8 +1,8 @@
-"use client"
-import { useContext } from "react"
-import { UserContext } from "@/context/UserContext"
-import { Button } from 'flowbite-react';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+// "use client"
+// import { useContext } from "react"
+// import { UserContext } from "@/context/UserContext"
+// import { Button } from 'flowbite-react';
+// import { HiOutlineArrowRight } from 'react-icons/hi';
 
 export default function Header() {
     // const { loggedin } = useContext(UserContext)

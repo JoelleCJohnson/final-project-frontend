@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
-    const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext) || {}
+    const { token, setToken, loggedin, setLoggedIn } = useContext(UserContext)
     const [error, setError] = useState(null)
 
     const route = useRouter()
@@ -30,7 +30,10 @@ export default function Login() {
             password: e.target.password.value
         }
 
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/login', {
+        fetch(
+            'https://holiday-wishlist-jj.ue.r.appspot.com/'
+            // 'http://localhost:3001/'
+            , {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',

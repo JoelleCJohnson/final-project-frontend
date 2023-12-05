@@ -24,7 +24,7 @@ export default function UserProvider({ children }){
 
     
     return(
-        <UserContext.Provider value={{ token, setToken: _setToken, loggedin, setLoggedIn: _setLoggedIn }} >
+        <UserContext.Provider value={{ token, setToken, loggedin, setLoggedIn: _setLoggedIn }} >
             {children}
         </UserContext.Provider>
     )
