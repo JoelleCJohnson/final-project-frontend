@@ -16,8 +16,8 @@ export default function DisplayWishlist() {
     useEffect(() => {
         if(!token) return
         fetch(
-            // 'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
-            'http://localhost:3001/dashboard'
+            'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
+            // 'http://localhost:3001/dashboard'
             ,{
             method :'GET',
             headers: {
