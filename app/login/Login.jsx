@@ -32,8 +32,8 @@ export default function Login() {
         }
 
         fetch(
-            // 'https://holiday-wishlist-jj.ue.r.appspot.com/login'
-            'http://localhost:3001/login'
+            'https://holiday-wishlist-jj.ue.r.appspot.com/login'
+            // 'http://localhost:3001/login'
             , {
             method: 'POST',
             headers: {

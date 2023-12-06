@@ -17,8 +17,8 @@ export default function AddItem() {
         }
 
     fetch(
-        // 'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
-            'http://localhost:3001/dashboard'
+        'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
+            // 'http://localhost:3001/dashboard'
     , {
             method: 'POST',
             headers: {
