@@ -1,0 +1,71 @@
+[debug] [2023-12-06T19:37:04.165Z] ----------------------------------------------------------------------
+[debug] [2023-12-06T19:37:04.165Z] Command:       /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/node /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/firebase deploy
+[debug] [2023-12-06T19:37:04.166Z] CLI Version:   12.9.1
+[debug] [2023-12-06T19:37:04.166Z] Platform:      darwin
+[debug] [2023-12-06T19:37:04.166Z] Node Version:  v18.17.0
+[debug] [2023-12-06T19:37:04.167Z] Time:          Wed Dec 06 2023 14:37:04 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-06T19:37:04.167Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-06T19:37:04.168Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-06T19:37:04.225Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-06T19:37:04.226Z] > authorizing via signed-in user (joellej221@gmail.com)
+[debug] [2023-12-06T19:37:04.226Z] [iam] checking project final-project-630f3 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-06T19:37:04.226Z] > refreshing access token with scopes: []
+[debug] [2023-12-06T19:37:04.226Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-06T19:37:04.227Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-06T19:37:04.365Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-06T19:37:04.365Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-12-06T19:37:04.389Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-06T19:37:04.389Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-06T19:37:04.404Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions [none]
+[debug] [2023-12-06T19:37:04.404Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions x-goog-quota-user=projects/final-project-630f3
+[debug] [2023-12-06T19:37:04.404Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-06T19:37:04.697Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions 200
+[debug] [2023-12-06T19:37:04.698Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-06T19:37:04.700Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 [none]
+[debug] [2023-12-06T19:37:04.994Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 200
+[debug] [2023-12-06T19:37:04.994Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 {"projectId":"final-project-630f3","projectNumber":"881524229256","displayName":"Final project","name":"projects/final-project-630f3","resources":{"hostingSite":"final-project-630f3"},"state":"ACTIVE","etag":"1_b6c3fcc0-a764-4c29-bb1e-82a96e70471e"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info]    ▲ Next.js 14.0.3
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info] PageNotFoundError: Cannot find module for page: /_not-found
+    at getPagePath (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/require.js:94:15)
+    at requirePage (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/require.js:99:22)
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/load-components.js:59:84
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async loadComponentsImpl (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/server/load-components.js:59:26)
+    at async /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/build/utils.js:1077:32
+    at async Span.traceAsyncFn (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/trace/trace.js:140:20) {
+  code: 'ENOENT'
+}
+
+[info] 
+> Build error occurred
+
+[info] Error: Failed to collect page data for /_not-found
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/build/utils.js:1217:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  type: 'Error'
+}
+
+[debug] [2023-12-06T19:40:15.738Z] Error: ENOENT: no such file or directory, open '/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.

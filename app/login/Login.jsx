@@ -11,12 +11,13 @@ export default function Login() {
 
     const route = useRouter()
 
-    const handleLogin = (token) => {
+    const handleLogin = async (token) => {
         if(token.message){
             setError(token.message)
             return
         }
-        setToken(token.token)
+        await setToken(token.token)
+        console.log(token.token)
         setError()
         route.push('/dashboard')
     }
@@ -31,13 +32,14 @@ export default function Login() {
         }
 
         fetch(
-            'https://holiday-wishlist-jj.ue.r.appspot.com/'
-            // 'http://localhost:3001/'
+            // 'https://holiday-wishlist-jj.ue.r.appspot.com/login'
+            'http://localhost:3001/login'
             , {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json',
+                'Content-Type': 'application/json'
             },
+            // mode: 'no-cors',
             body: JSON.stringify(formData)
         })
             .then(res => res.json())
@@ -57,14 +59,14 @@ export default function Login() {
                     <div className='mb-2 block'>
                         <Label htmlFor='email' value='Your email' />
                     </div>
-                    <TextInput id='email' type='email' placeholder='name@email.com' required />
+                    <TextInput id='email' name='email' type='email' placeholder='name@email.com' required />
                 </div>
 
                 <div>
                     <div className='mb-2 block'>
                         <Label htmlFor='password' value='Your password' />
                     </div>
-                    <TextInput id='password' type='password' required />
+                    <TextInput id='password' name='password' type='password' required />
                 </div>
 
                 <div className='flex items-center gap-2'>

@@ -13,7 +13,6 @@ export default function DisplayWishlist() {
 
     const route = useRouter()
 
-    console.log(token)
     useEffect(() => {
         if(!token) return
         fetch(

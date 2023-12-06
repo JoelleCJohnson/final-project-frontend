@@ -1,9 +1,11 @@
 "use client"
-import {ItemContext} from "@/context/ItemsContext"
+import { ItemContext } from "@/context/ItemsContext"
+import { UserContext } from "@/context/UserContext"
 import { useContext } from "react"
 
 export default function AddItem() {
     const { setWishlist } = useContext(ItemContext)
+    const { token } = useContext(UserContext)
 
     const handleAddItem = (e) => {
         e.preventDefault()
@@ -14,7 +16,10 @@ export default function AddItem() {
             price: e.target.itemPrice.value
         }
 
-    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+    fetch(
+        // 'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
+            'http://localhost:3001/dashboard'
+    , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
