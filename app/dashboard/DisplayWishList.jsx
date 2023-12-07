@@ -1,35 +1,39 @@
 "use client"
-import { useContext, useEffect, useState } from "react"
+import jwt from "jsonwebtoken"
+import { useContext, useEffect, useMemo } from "react"
 import { ItemContext } from "@/context/ItemsContext"
 import { useRouter } from "next/navigation"
 import { UserContext } from "@/context/UserContext"
 
+
 export default function DisplayWishlist() {
-    const [show, setShow] = useState(false)
-    const [itemDetails, setItemDetails] = useState()
 
-    const { wishlist, setWishlist } = useContext(ItemContext)
+    const { wishlist, setWishlist, show, setShow, setItemDetails } = useContext(ItemContext)
     const { token } = useContext(UserContext)
-
     const route = useRouter()
 
+    const sharelink = useMemo(()=>{
+        const decoded = jwt.decode(token)
+        const { userid } = decoded
+        return `http://localhost:3000/share/${userid}`
+    },[token])
+
     useEffect(() => {
-        if(!token) return
+        if (!token) return
         fetch(
             'https://holiday-wishlist-jj.ue.r.appspot.com/dashboard'
             // 'http://localhost:3001/dashboard'
-            ,{
-            method :'GET',
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token
-            }
-        })
+            , {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token
+                }
+            })
             .then(res => res.json())
             .then(setWishlist)
             .catch(console.error)
     }, [token])
-
 
     const showItemCard = (thisItem) => {
         if (show === true) {
@@ -58,7 +62,6 @@ export default function DisplayWishlist() {
             .then(setWishlist)
             .catch(console.error)
     }
-
     const deleteButton = (item) => {
         const deleteItem = {
             id: item.listid
@@ -77,20 +80,34 @@ export default function DisplayWishlist() {
 
     }
 
-    return (
-        <section className="max-w-sm mx-auto flex flex-col items-center justify-center border bg-red-600 border-2 rounded-lg m-4 p-2 col-start-1 ">
-            <h2 className="border border-red-600 border-2 rounded-lg m-4 p-2 text-zinc-50">Your Wishlist</h2>
-            <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
 
-                {!wishlist ?
+
+    const handleShareList = () => {
+        const decoded = jwt.decode(token)
+        const userid = decoded.userid
+        route.push(`/share/${userid}`)
+    }
+
+    return (
+        <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
+            <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
+            <p>
+                Share your wishlist with this link:
+            </p>
+            <button onClick={handleShareList} className="item-center text-blue-700 underline">
+                {sharelink}
+            </button>
+            <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
+                {!wishlist 
+                    ?
                     <h2>Loading...</h2>
                     :
                     wishlist.map((item) => {
                         const thisItem = item
                         if (item.ispurchased === false) {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>      
-                                        <h3 className="text-center" >{item.itemname} </h3>
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>
+                                    <h3 className="text-center" >{item.itemname} </h3>
 
                                     {show &&
                                         <div className="block">
@@ -99,7 +116,7 @@ export default function DisplayWishlist() {
                                             <p>
                                                 Already purchased?<button className="flex justify-center text-blue-600" onClick={() => handlePurchase(item)}>click here!</button>
                                             </p>
-                                        <button className=" px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
+                                            <button className=" px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
                                         </div>
                                     }
                                 </li>
@@ -107,7 +124,7 @@ export default function DisplayWishlist() {
                         }
                         else {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-400 text-zinc-200" onClick={() => showItemCard(thisItem)}>
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-300 text-zinc-100" onClick={() => showItemCard(thisItem)}>
                                     <h3 className="text-center" >{item.itemname}</h3>
                                     {show &&
                                         <button className="px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
