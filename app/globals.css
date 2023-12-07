@@ -18,7 +18,3 @@ body {
     rgb(var(--background-start-rgb));
   
 }
-
-form {
-  background-image: url('public/Untitled design.jpg');
-}
