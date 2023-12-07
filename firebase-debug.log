@@ -1,0 +1,89 @@
+[debug] [2023-12-07T02:32:36.160Z] ----------------------------------------------------------------------
+[debug] [2023-12-07T02:32:36.160Z] Command:       /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/node /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/firebase deploy
+[debug] [2023-12-07T02:32:36.161Z] CLI Version:   12.9.1
+[debug] [2023-12-07T02:32:36.161Z] Platform:      darwin
+[debug] [2023-12-07T02:32:36.161Z] Node Version:  v18.17.0
+[debug] [2023-12-07T02:32:36.165Z] Time:          Wed Dec 06 2023 21:32:36 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-07T02:32:36.165Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-07T02:32:36.202Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-07T02:32:36.202Z] > authorizing via signed-in user (joellej221@gmail.com)
+[debug] [2023-12-07T02:32:36.202Z] [iam] checking project final-project-630f3 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-07T02:32:36.203Z] > refreshing access token with scopes: []
+[debug] [2023-12-07T02:32:36.204Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-07T02:32:36.204Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-07T02:32:36.355Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-07T02:32:36.356Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-07T02:32:36.373Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions [none]
+[debug] [2023-12-07T02:32:36.373Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions x-goog-quota-user=projects/final-project-630f3
+[debug] [2023-12-07T02:32:36.373Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T02:32:36.646Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions 200
+[debug] [2023-12-07T02:32:36.647Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T02:32:36.649Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 [none]
+[debug] [2023-12-07T02:32:36.939Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 200
+[debug] [2023-12-07T02:32:36.940Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 {"projectId":"final-project-630f3","projectNumber":"881524229256","displayName":"Final project","name":"projects/final-project-630f3","resources":{"hostingSite":"final-project-630f3"},"state":"ACTIVE","etag":"1_b6c3fcc0-a764-4c29-bb1e-82a96e70471e"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info]    ▲ Next.js 14.0.3
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/8) ...
+
+[info] TypeError: Cannot destructure property 'userid' of 'c.query' as it is undefined.
+    at l (/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/share/page.js:1:5541)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46138)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nR (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:45694)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46289)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:59937)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nI (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:65445)
+    at nj (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64852)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:63041)
+
+[info] 
+Error occurred prerendering page "/share". Read more: https://nextjs.org/docs/messages/prerender-error
+TypeError: Cannot destructure property 'userid' of 'c.query' as it is undefined.
+    at l (/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/share/page.js:1:5541)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46138)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nR (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:45694)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46289)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:59937)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nI (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:65445)
+    at nj (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64852)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:63041)
+
+[info]    Generating static pages (2/8) 
+
+[info]    Generating static pages (4/8) 
+
+[info]    Generating static pages (6/8) 
+
+[info]  ✓ Generating static pages (8/8) 
+
+[info] 
+
+[info] > Export encountered errors on following paths:
+	/share/page: /share
+
+[debug] [2023-12-07T07:24:13.764Z] Error: ENOENT: no such file or directory, open '/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
