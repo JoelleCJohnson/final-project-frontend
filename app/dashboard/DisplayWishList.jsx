@@ -15,7 +15,7 @@ export default function DisplayWishlist() {
     const sharelink = useMemo(()=>{
         const decoded = jwt.decode(token)
         const { userid } = decoded
-        return `http://localhost:3000/share/${userid}`
+        return `https://final-project-630f3.web.app/share/${userid}`
     },[token])
 
     useEffect(() => {

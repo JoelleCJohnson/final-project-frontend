@@ -87,3 +87,79 @@ TypeError: Cannot destructure property 'userid' of 'c.query' as it is undefined.
 [debug] [2023-12-07T07:24:13.764Z] Error: ENOENT: no such file or directory, open '/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/export-marker.json'
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2023-12-07T19:49:08.143Z] ----------------------------------------------------------------------
+[debug] [2023-12-07T19:49:08.144Z] Command:       /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/node /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/firebase deploy
+[debug] [2023-12-07T19:49:08.145Z] CLI Version:   12.9.1
+[debug] [2023-12-07T19:49:08.145Z] Platform:      darwin
+[debug] [2023-12-07T19:49:08.145Z] Node Version:  v18.17.0
+[debug] [2023-12-07T19:49:08.149Z] Time:          Thu Dec 07 2023 14:49:08 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-07T19:49:08.149Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-07T19:49:08.151Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-07T19:49:08.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-07T19:49:08.208Z] > authorizing via signed-in user (joellej221@gmail.com)
+[debug] [2023-12-07T19:49:08.208Z] [iam] checking project final-project-630f3 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-07T19:49:08.209Z] > refreshing access token with scopes: []
+[debug] [2023-12-07T19:49:08.209Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-07T19:49:08.209Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-07T19:49:08.331Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-07T19:49:08.331Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-12-07T19:49:08.351Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-07T19:49:08.351Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-07T19:49:08.361Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions [none]
+[debug] [2023-12-07T19:49:08.361Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions x-goog-quota-user=projects/final-project-630f3
+[debug] [2023-12-07T19:49:08.361Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T19:49:08.654Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions 200
+[debug] [2023-12-07T19:49:08.655Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T19:49:08.657Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 [none]
+[debug] [2023-12-07T19:49:09.002Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 200
+[debug] [2023-12-07T19:49:09.003Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 {"projectId":"final-project-630f3","projectNumber":"881524229256","displayName":"Final project","name":"projects/final-project-630f3","resources":{"hostingSite":"final-project-630f3"},"state":"ACTIVE","etag":"1_b6c3fcc0-a764-4c29-bb1e-82a96e70471e"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info]    ▲ Next.js 14.0.3
+
+[info] 
+   Creating an optimized production build ...
+
+[debug] [2023-12-07T19:53:34.198Z] ----------------------------------------------------------------------
+[debug] [2023-12-07T19:53:34.199Z] Command:       /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/node /Users/joellejohnson/.nvm/versions/node/v18.17.0/bin/firebase deploy
+[debug] [2023-12-07T19:53:34.199Z] CLI Version:   12.9.1
+[debug] [2023-12-07T19:53:34.200Z] Platform:      darwin
+[debug] [2023-12-07T19:53:34.200Z] Node Version:  v18.17.0
+[debug] [2023-12-07T19:53:34.204Z] Time:          Thu Dec 07 2023 14:53:34 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-07T19:53:34.204Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-07T19:53:34.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-07T19:53:34.243Z] > authorizing via signed-in user (joellej221@gmail.com)
+[debug] [2023-12-07T19:53:34.244Z] [iam] checking project final-project-630f3 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-07T19:53:34.244Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions [none]
+[debug] [2023-12-07T19:53:34.245Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions x-goog-quota-user=projects/final-project-630f3
+[debug] [2023-12-07T19:53:34.245Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T19:53:34.544Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions 200
+[debug] [2023-12-07T19:53:34.544Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/final-project-630f3:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-07T19:53:34.545Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 [none]
+[debug] [2023-12-07T19:53:34.804Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 200
+[debug] [2023-12-07T19:53:34.805Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/final-project-630f3 {"projectId":"final-project-630f3","projectNumber":"881524229256","displayName":"Final project","name":"projects/final-project-630f3","resources":{"hostingSite":"final-project-630f3"},"state":"ACTIVE","etag":"1_b6c3fcc0-a764-4c29-bb1e-82a96e70471e"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info]    ▲ Next.js 14.0.3
+
+[info] 
+   Creating an optimized production build ...
+

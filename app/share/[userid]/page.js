@@ -34,8 +34,8 @@ export default function SharePage({ params: { userid } }) {
             .then(setFriendsItems)
             .catch(console.error)
         fetch(
-            // `https://holiday-wishlist-jj.ue.r.appspot.com/${userid}`
-            `http://localhost:3001/info/${userid}`
+            `https://holiday-wishlist-jj.ue.r.appspot.com/info/${userid}`
+            // `http://localhost:3001/info/${userid}`
         )
             .then(res => res.json())
             .then(setFriendDetails)
