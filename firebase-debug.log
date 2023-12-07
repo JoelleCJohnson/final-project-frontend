@@ -163,3 +163,53 @@ TypeError: Cannot destructure property 'userid' of 'c.query' as it is undefined.
 [info] 
    Creating an optimized production build ...
 
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/7) ...
+
+[info]    Generating static pages (1/7) 
+
+[info]    Generating static pages (3/7) 
+
+[info]    Generating static pages (5/7) 
+
+[info] TypeError: Cannot destructure property 'userid' of 'e' as it is null.
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/dashboard/page.js:1:6320
+    at Object.nn [as useMemo] (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:39905)
+    at t.useMemo (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:106682)
+    at c (/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/dashboard/page.js:1:6286)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46138)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:59937)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nI (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:65445)
+    at nj (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64852)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:63041)
+
+[info] 
+Error occurred prerendering page "/dashboard". Read more: https://nextjs.org/docs/messages/prerender-error
+TypeError: Cannot destructure property 'userid' of 'e' as it is null.
+    at /Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/dashboard/page.js:1:6320
+    at Object.nn [as useMemo] (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:39905)
+    at t.useMemo (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:106682)
+    at c (/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/server/app/dashboard/page.js:1:6286)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46138)
+    at nT (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:59937)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:62795)
+    at nI (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:65445)
+    at nj (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64852)
+    at nO (/Users/joellejohnson/c12/FinalProject/final-frontend-2/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:63041)
+
+[info]  ✓ Generating static pages (7/7) 
+
+[info] 
+
+[info] > Export encountered errors on following paths:
+	/dashboard/page: /dashboard
+
+[debug] [2023-12-07T19:56:45.922Z] Error: ENOENT: no such file or directory, open '/Users/joellejohnson/c12/FinalProject/final-frontend-2/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.

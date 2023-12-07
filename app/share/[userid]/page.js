@@ -69,7 +69,7 @@ export default function SharePage({ params: { userid } }) {
 
 
     return (
-        <main className="bg-zinc-50 max-h-fit">
+        <main className="bg-white h-screen">
             <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-100 text-center bg-red-600">{friendDetails[0]?.firstname}'s wishlist:</h1>
             <ul className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 space-y-4 p-4 max-h-fit col-start-1">
                 {!friendsItems

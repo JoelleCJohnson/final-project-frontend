@@ -51,7 +51,7 @@ export default function Signup() {
   }
 
   return (
-    <form className="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleFormSubmit}>
+    <form className='mx-auto mb-0 mt-8 max-w-md space-y-4' onSubmit={handleFormSubmit}>
       <div className='mx-auto max-w-lg text-center'>
         <h2 className="text-2xl font-bold sm:text-3xl">Sign Up:</h2>
         <p className="text-center">Already have an account? <a href='/' className="text-blue-600 underline">Log in</a></p>
@@ -128,7 +128,7 @@ export default function Signup() {
         </Label>
       </div>
 
-      <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300" type="submit">Register new account</Button>
+      <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300 w-full" type="submit">Register new account</Button>
     </form>
   );
 }

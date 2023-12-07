@@ -3,6 +3,7 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useContext, useState } from "react"
 import { UserContext } from "@/context/UserContext"
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Login() {
 
@@ -49,7 +50,8 @@ export default function Login() {
     }
 
     return (
-        <>
+        <main className="relative max-w-xl h-80">
+             
             <form className='mx-auto mb-0 mt-8 max-w-md space-y-4' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center'>
                     <h2 className='text-2xl font-bold sm:text-3xl'>Login:</h2>
@@ -57,14 +59,14 @@ export default function Login() {
 
                 <div>
                     <div className='mb-2 block'>
-                        <Label htmlFor='email' value='Your email' />
+                        <Label htmlFor='email' value='Email:' />
                     </div>
                     <TextInput id='email' name='email' type='email' placeholder='name@email.com' required />
                 </div>
 
                 <div>
                     <div className='mb-2 block'>
-                        <Label htmlFor='password' value='Your password' />
+                        <Label htmlFor='password' value='Password:' />
                     </div>
                     <TextInput id='password' name='password' type='password' required />
                 </div>
@@ -74,11 +76,11 @@ export default function Login() {
                     <Label htmlFor='remember'>Remember me</Label>
                 </div>
 
-                <Button className='inline-block rounded-lg bg-red-600 px-32 md:px-48 py-3 text-sm font-medium text-zinc-50 hover:bg-green-100' type='submit'>Submit</Button>
+                <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300 w-full" type='submit'>Submit</Button>
 
                 <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a>
                 </p>
             </form>
-        </>
+        </main>
     )
 }

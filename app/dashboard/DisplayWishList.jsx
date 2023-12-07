@@ -97,7 +97,7 @@ export default function DisplayWishlist() {
             <button onClick={handleShareList} className="item-center text-blue-700 underline">
                 {sharelink}
             </button>
-            <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
+            <ul className="w-48 text-lg font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
                 {!wishlist 
                     ?
                     <h2>Loading...</h2>
@@ -106,8 +106,9 @@ export default function DisplayWishlist() {
                         const thisItem = item
                         if (item.ispurchased === false) {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>
-                                    <h3 className="text-center" >{item.itemname} </h3>
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg text-lg" onClick={() => showItemCard(thisItem)}>
+                                    
+                                    <h3 className="text-center text-lg" >{item.itemname} </h3>
 
                                     {show &&
                                         <div className="block">
