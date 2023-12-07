@@ -4,11 +4,38 @@ import { ItemContext } from "@/context/ItemsContext"
 import { useRouter } from "next/navigation"
 import { UserContext } from "@/context/UserContext"
 
+export const showItemCard = (thisItem) => {
+    if (show === true) {
+        setShow(false)
+    }
+    else {
+        setShow(true)
+    }
+    setItemDetails(thisItem)
+}
+
+export const handlePurchase = (item) => {
+    const itemData = {
+        id: item.listid
+    }
+
+    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'mode': 'no-cors',
+        },
+        body: JSON.stringify(itemData)
+    })
+        .then(res => res.json())
+        .then(setWishlist)
+        .catch(console.error)
+}
+
 export default function DisplayWishlist() {
-    const [show, setShow] = useState(false)
     const [itemDetails, setItemDetails] = useState()
 
-    const { wishlist, setWishlist } = useContext(ItemContext)
+    const { wishlist, setWishlist, show, setShow } = useContext(ItemContext)
     const { token } = useContext(UserContext)
 
     const route = useRouter()
@@ -30,34 +57,6 @@ export default function DisplayWishlist() {
             .catch(console.error)
     }, [token])
 
-
-    const showItemCard = (thisItem) => {
-        if (show === true) {
-            setShow(false)
-        }
-        else {
-            setShow(true)
-        }
-        setItemDetails(thisItem)
-    }
-
-    const handlePurchase = (item) => {
-        const itemData = {
-            id: item.listid
-        }
-
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'mode': 'no-cors',
-            },
-            body: JSON.stringify(itemData)
-        })
-            .then(res => res.json())
-            .then(setWishlist)
-            .catch(console.error)
-    }
 
     const deleteButton = (item) => {
         const deleteItem = {
