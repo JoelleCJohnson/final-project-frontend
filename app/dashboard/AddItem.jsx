@@ -36,7 +36,7 @@ export default function AddItem() {
 
     return (
         <form onSubmit={handleAddItem} className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4">
-            <h2 className="flex text-center text-2xl font-bold sm:text-3xl"> Add an Item to Your Wishlist:</h2>
+            <h2 className="flex text-center text-2xl font-bold sm:text-3xl"> Add an Item to Your Wishlist</h2>
             <label
                 htmlFor="itemName"
                 className="block mb-2 text-sm font-medium text-gray-900 text-center "

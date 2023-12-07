@@ -81,8 +81,8 @@ export default function DisplayWishlist() {
     }
 
     return (
-        <section className="max-w-sm mx-auto flex flex-col items-center justify-center border bg-red-600 border-2 rounded-lg m-4 p-2 col-start-1 ">
-            <h2 className="border border-red-600 border-2 rounded-lg m-4 p-2 text-zinc-50">Your Wishlist</h2>
+        <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
+            <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
             <button onClick={handleShareList}>Share your wishlist by clicking here!</button>
             <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg m-8">
 
@@ -111,7 +111,7 @@ export default function DisplayWishlist() {
                         }
                         else {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-400 text-zinc-200" onClick={() => showItemCard(thisItem)}>
+                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-300 text-zinc-100" onClick={() => showItemCard(thisItem)}>
                                     <h3 className="text-center" >{item.itemname}</h3>
                                     {show &&
                                         <button className="px-1.5 text-xs text-red-500 border border-red-300 rounded-full hover:bg-red-500 hover:text-white" onClick={() => deleteButton(item)}>x</button>
