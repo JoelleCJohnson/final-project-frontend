@@ -76,7 +76,7 @@ export default function Login() {
 
                 <Button className='inline-block rounded-lg bg-red-600 px-32 md:px-48 py-3 text-sm font-medium text-zinc-50 hover:bg-green-100' type='submit'>Submit</Button>
 
-                <p> Don't have an account? <a href='/signup'>Sign up</a>
+                <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a>
                 </p>
             </form>
         </>

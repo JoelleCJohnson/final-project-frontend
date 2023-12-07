@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function Signup() {
 
-  const { setToken } = useContext(UserContext) 
+  const { setToken } = useContext(UserContext)
 
   const route = useRouter()
 
@@ -39,20 +39,23 @@ export default function Signup() {
       'https://holiday-wishlist-jj.ue.r.appspot.com/signup'
       // 'http://localhost:3001/signup'
       , {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
       .then(res => res.json())
       .then(handleSignUp)
       .catch(alert)
   }
 
   return (
-    <form className="flex max-w-md flex-col flex-2 gap-4 m-4 p-4 rounded-lg bg-red-600" onSubmit={handleFormSubmit}>
-      <h2 className="flex justify-center text-white">Sign Up:</h2>
+    <form className="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleFormSubmit}>
+      <div className='mx-auto max-w-lg text-center'>
+        <h2 className="text-2xl font-bold sm:text-3xl">Sign Up:</h2>
+        <p className="text-center">Already have an account? <a href='/' className="text-blue-600 underline">Log in</a></p>
+      </div>
 
       <div>
         <div className="mb-2 block">

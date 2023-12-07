@@ -1,12 +1,12 @@
 import Header from '@/components/Header'
-import LoginPage from './login/page'
+import Login from './login/Login'
 
 
 export default function Home() {
   return (
       <main className='bg-white'>
         <Header />
-        <LoginPage />
+        <Login />
         {/* <Footer /> */}
       </main>
   )
