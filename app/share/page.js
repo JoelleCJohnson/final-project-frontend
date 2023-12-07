@@ -15,7 +15,10 @@ export default function SharePage() {
     const { userid } = route.query
 
     useEffect(() => {
-        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
+        fetch(
+            // `https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`
+            `http://http://localhost:3000/share/${userid}`
+            )
             .then(res => res.json())
             .then(setFriendsItems)
             .catch(console.error)
