@@ -4,7 +4,7 @@ import { useContext, useEffect, useState, useMemo, React } from "react"
 import { ItemContext } from "@/context/ItemsContext"
 import { useRouter } from "next/navigation"
 import { UserContext } from "@/context/UserContext"
-import { Button, Modal } from 'antd';
+import { Button, Modal, Flex } from 'antd';
 
 
 export default function DisplayWishlist() {
@@ -19,7 +19,6 @@ export default function DisplayWishlist() {
 
     const showModal = async (thisItem) => {
         await setItemDetails(thisItem);
-        console.log(itemDetails)
         setOpen(true)
     };
 
@@ -54,11 +53,11 @@ export default function DisplayWishlist() {
 
     const decodeToken = () => {
         jwt.decode(token, (err, decoded) => {
-            if(err){
+            if (err) {
                 console.log(err)
                 next()
             }
-            else{
+            else {
                 console.log(decoded)
                 // const { userid } = decoded
                 const userid = decoded.userid
@@ -69,17 +68,7 @@ export default function DisplayWishlist() {
     }
 
 
-    const sharelink = useMemo(() => decodeToken(), [token])
-
-    // const showItemCard = (thisItem) => {
-    //     if (show === true) {
-    //         setShow(false)
-    //     }
-    //     else {
-    //         setShow(true)
-    //     }
-    //     setItemDetails(thisItem)
-    // }
+    // const sharelink = useMemo(() => decodeToken(), [token])
 
     const handlePurchase = (item) => {
         const itemData = {
@@ -98,23 +87,22 @@ export default function DisplayWishlist() {
             .then(setWishlist)
             .catch(console.error)
     }
-    // const deleteButton = (item) => {
-    //     const deleteItem = {
-    //         id: item.listid
-    //     }
-    //     fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
-    //         method: "DELETE",
-    //         headers: {
-    //             "Content-type": "application/json",
-    //             Authorization: token
-    //         },
-    //         body: JSON.stringify(deleteItem)
-    //     })
-    //         .then(res => res.json())
-    //         .then(setWishlist)
-    //         .catch(console.error)
-
-    // }
+    const deleteButton = (item) => {
+        const deleteItem = {
+            id: item.listid
+        }
+        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: token
+            },
+            body: JSON.stringify(deleteItem)
+        })
+            .then(res => res.json())
+            .then(setWishlist)
+            .catch(console.error)
+    }
 
     const handleShareList = () => {
         const decoded = jwt.decode(token)
@@ -129,9 +117,7 @@ export default function DisplayWishlist() {
                 Share your wishlist with this link:
             </p>
             <button onClick={handleShareList} className="item-center text-blue-700 underline">
-                <a href={sharelink}>
-                    {sharelink}
-                </a>
+            https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
             </button>
             <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
                 {!wishlist
@@ -140,51 +126,58 @@ export default function DisplayWishlist() {
                     :
                     wishlist.map((item) => {
                         const thisItem = item
-                        if(item.ispurchased === false){
-                        return (
-                            <li key={item.listid} className="items-center justify-center">
-                                <Button className="text-center text-zinc-800 text-lg w-full" type="primary" onClick={() => showModal(thisItem)} >
-                                    {item.itemname}
-                                </Button>
-                            </li>
-                        )
-                    }
-                    else{
-                        return (
-                            <li key={item.listid}>
-                                <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full" type="primary" onClick={() => showModal(thisItem)} >
-                                    {item.itemname}
-                                </Button>
-                            </li>
-                        )
-                    }
+                        if (item.ispurchased === false) {
+                            return (
+                                <li key={item.listid} className="items-center justify-center">
+                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        {item.itemname}
+                                    </Button>
+                                </li>
+                            )
+                        }
+                        else {
+                            return (
+                                <li key={item.listid}>
+                                    <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        {item.itemname}
+                                    </Button>
+                                </li>
+                            )
+                        }
                     })
                 }
             </ul>
             <Modal
+                width="40em"
                 open={open}
-                title={itemDetails?.itemname}
+                title={<h1 className="text-center text-3xl">{itemDetails?.itemname}</h1>}
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[
-                    <Button key="back" onClick={handleCancel}>
-                        Done
-                    </Button>,
-                    <Button key="submit" type="primary" loading={loading} onClick={handlePurchase}>
-                        Already Purchased?
-                    </Button>,
-                    <Button
-                        key="link"
-                        href={itemDetails?.itemlink}
-                        type="primary"
-                        loading={loading}
-                        onClick={handleOk}
-                    >
-                        Purchase Here
-                    </Button>,
+                    <Flex wrap="no-wrap justify-between" gap="small">
+                        <Button
+                            key="link"
+                            href={itemDetails?.itemlink}
+                            type="primary"
+                            loading={loading}
+                            onClick={handleOk}
+                            className="bg-green-500"
+                        >
+                            Purchase Here
+                        </Button>
+                        {
+                            !itemDetails?.ispurchased &&
+                            <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
+                                Already Purchased?
+                            </Button>
+                        }
+                        <Button key="primary" className="bg-red-500 text-white" onClick={deleteButton}>
+                            Delete Item from Wishlist
+                        </Button>
+                    </Flex>
                 ]}
             >
-                <p>{itemDetails?.itemprice}</p>
+                <h2 className="text-center text-lg">Price: ${itemDetails?.itemprice}</h2>
                 {/* <p>Some contents...</p>
                                 <p>Some contents...</p>
                                 <p>Some contents...</p>

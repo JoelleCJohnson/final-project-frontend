@@ -2,19 +2,22 @@
 import { useContext } from "react"
 import { UserContext } from "@/context/UserContext"
 import { useRouter } from "next/navigation"
+import {Button} from "antd"
+import Image from "next/image"
 
 export default function Header() {
     const { token } = useContext(UserContext)
     const route = useRouter()
     
     return (
-        <header className="text-center bg-red-600 p-8">
-            <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-50 italic">WishLily</h1>
+        <header className="flex justify-between text-center bg-red-600 p-8">
+            <Image src="/Wishlily.png" width={190} height={0} alt="WishLily logo written in script"/>
             {token &&
-               <button onClick={() => {
+               <Button className="flex justify-end text-zinc-50 text-xs border border-1 border-zinc-50 rounded-3xl p-x-2 hover:bg-zinc-50 hover:text-red-600"
+               onClick={() => {
                 sessionStorage.clear()
                 route.push('/')
-            }}>Log out</button>
+            }}>Log out</Button>
             }
         </header>
     )
