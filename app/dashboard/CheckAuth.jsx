@@ -11,9 +11,7 @@ export default function CheckAuth(){
 
     useEffect(()=> {
         if(!token && pathname.startsWith('/dashboard')){
-            console.log("Checking token in session storage...")
             const _token = sessionStorage.getItem('token')
-            console.log(_token)
             if(_token) {
                 setToken(_token)
             } 
