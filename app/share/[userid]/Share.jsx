@@ -28,7 +28,7 @@ export default function Share({ userid }) {
             .catch(console.error)
         if (jwt.decode(token)?.userid !== userid) {
             setIsUser(false)
-            console.log(jwt.decode(token)?.userid)
+            console.log("isUser ----->", isUser)
         }
     }, [userid])
 
