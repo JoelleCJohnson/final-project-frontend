@@ -87,10 +87,10 @@ export default function DisplayWishlist() {
         <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
             <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
 
-            <div>
                 <p>
                     Share your wishlist with this link:
                 </p>
+            <div className="flex">
                 <button onClick={handleShareList} className="item-center text-blue-700 underline">
                     https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
                 </button>
