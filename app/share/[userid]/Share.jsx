@@ -28,6 +28,7 @@ export default function Share({ userid }) {
             .catch(console.error)
         if (jwt.decode(token)?.userid !== userid) {
             setIsUser(false)
+            console.log("Viewing someone elses wishlist")
         }
     }, [userid])
 
