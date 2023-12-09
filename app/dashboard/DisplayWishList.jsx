@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { UserContext } from "@/context/UserContext"
 import { Button, Modal, Flex } from "antd"
 import { CopyOutlined } from "@ant-design/icons"
+import Image from "next/image"
 
 
 export default function DisplayWishlist() {
@@ -84,72 +85,79 @@ export default function DisplayWishlist() {
     }
 
     return (
-        <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
-            <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
+        <>
+
+            <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
+        <div className="relative">
+
+        {/* <Image src={"/caley-dimmock-_HCpwe1-Prc-unsplash.jpg"} alt="gifts in brown wrapping paper"  layout="fill" objectFit='cover'/> */}
+        </div>
+                <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
 
                 <p>
                     Share your wishlist with this link:
                 </p>
-            <div className="flex">
-                <button onClick={handleShareList} className="item-center text-blue-700 underline">
-                    https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
-                </button>
-                <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
-                    <CopyOutlined />
-                </button>
-            </div>
+                <div className="flex">
+                    <button onClick={handleShareList} className="item-center text-blue-700 underline">
+                        https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
+                    </button>
+                    <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
+                        <CopyOutlined />
+                    </button>
+                </div>
 
-            <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
-                {!wishlist
-                    ?
-                    <h2>Loading...</h2>
-                    :
-                    wishlist.map((item) => {
-                        const thisItem = item
-                        return (
-                            <li key={item.listid} className="items-center justify-center">
-                                <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
-                                    {item.itemname}
-                                </Button>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-            <Modal
-                width="40em"
-                open={open}
-                title={<h1 className="text-center text-3xl">{itemDetails?.itemname}</h1>}
-                onCancel={handleCancel}
-                footer={[
-                    <Flex wrap="no-wrap justify-between" gap="small">
-                        <Button
-                            key="link"
-                            href={itemDetails?.itemlink}
-                            type="primary"
-                            loading={loading}
-                            className="bg-green-500"
-                        >
-                            Purchase Here
-                        </Button>
-                        {
-                            !itemDetails?.ispurchased &&
-                            <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
-                                Already Purchased?
+                <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
+                    {!wishlist
+                        ?
+                        <h2>Loading...</h2>
+                        :
+                        wishlist.map((item) => {
+                            const thisItem = item
+                            return (
+                                <li key={item.listid} className="items-center justify-center">
+                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        {item.itemname}
+                                    </Button>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                <Modal
+                    width="40em"
+                    open={open}
+                    title={<h1 className="text-center text-3xl">{itemDetails?.itemname}</h1>}
+                    onCancel={handleCancel}
+                    footer={[
+                        <Flex wrap="no-wrap justify-between" gap="small">
+                            <Button
+                                key="link"
+                                href={itemDetails?.itemlink}
+                                type="primary"
+                                loading={loading}
+                                className="bg-green-500"
+                            >
+                                Purchase Here
                             </Button>
-                        }
-                        <Button key="primary" className="bg-red-500 text-white" onClick={deleteButton}>
-                            Delete Item from Wishlist
-                        </Button>
-                    </Flex>
-                ]}
-            >
-                <h2 className="text-center text-lg">Price: ${itemDetails?.itemprice}</h2>
-                {/* <p>Some contents...</p>
+                            {
+                                !itemDetails?.ispurchased &&
+                                <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
+                                    Already Purchased?
+                                </Button>
+                            }
+                            <Button key="primary" className="bg-red-500 text-white" onClick={deleteButton}>
+                                Delete Item from Wishlist
+                            </Button>
+                        </Flex>
+                    ]}
+                >
+                    <h2 className="text-center text-lg">Price: ${itemDetails?.itemprice}</h2>
+                    {/* <p>Some contents...</p>
                                 <p>Some contents...</p>
                                 <p>Some contents...</p>
-                                <p>Some contents...</p> */}
-            </Modal>
-        </section >
+                            <p>Some contents...</p> */}
+                </Modal>
+            </section >
+        </>
     )
 }

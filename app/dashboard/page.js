@@ -7,13 +7,18 @@ import Image from 'next/image'
 export default function Dashboard() {
 
     return (
-        <section className='bg-white'> 
+        <>
+        <section className='relative'> 
         <Header />
-        <Image src={"/caley-dimmock-_HCpwe1-Prc-unsplash.jpg"} alt="gifts in brown wrapping paper" height={500} width={500} />
-            <section className='flex flex-row'>
+            <section className='flex flex-row relative'>
+                <div className='relative'>
+        <Image src={"/caley-dimmock-_HCpwe1-Prc-unsplash.jpg"} alt="gifts in brown wrapping paper"  layout="fill"/>
+
                 <DisplayWishlist />
+                </div>
                 <AddItem />
             </section>
         </section>
+        </>
     )
 }
