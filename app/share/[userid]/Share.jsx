@@ -1,45 +1,44 @@
 'use client'
 import jwt from "jsonwebtoken"
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { ItemContext } from "@/context/ItemsContext"
+import { Modal, Button, Flex } from "antd"
+import { UserContext } from "@/context/UserContext"
 
-export default function Share({ params: { userid } }){
-    const [friendsItems, setFriendsItems] = useState([])
-    const [friendDetails, setFriendDetails] = useState([])
-
-    const { show, setShow, setItemDetails } = useContext(ItemContext)
-
+export default function Share({ userid }) {
+    const { setItemDetails, itemDetails } = useContext(ItemContext)
+    const { token } = useContext(UserContext)
 
     const route = useRouter()
 
-
-    const showItemCard = (thisItem) => {
-        if (show === true) {
-            setShow(false)
-        }
-        else {
-            setShow(true)
-        }
-        setItemDetails(thisItem)
-    }
+    const [friendsItems, setFriendsItems] = useState([])
+    const [friendDetails, setFriendDetails] = useState([])
+    const [open, setOpen] = useState(false)
+    const [isUser, setIsUser] = useState(true)
 
     useEffect(() => {
-        fetch(
-            `https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`
-            // `http://http://localhost:3000/share/${userid}`
-        )
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
             .then(res => res.json())
             .then(setFriendsItems)
             .catch(console.error)
-        fetch(
-            `https://holiday-wishlist-jj.ue.r.appspot.com/info/${userid}`
-            // `http://localhost:3001/info/${userid}`
-        )
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/info/${userid}`)
             .then(res => res.json())
             .then(setFriendDetails)
             .catch(console.error)
+        if (jwt.decode(token)?.userid !== userid) {
+            setIsUser(false)
+        }
     }, [userid])
+
+    const showModal = async (thisItem) => {
+        await setItemDetails(thisItem);
+        setOpen(true)
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
 
     const handlePurchase = (item) => {
         const itemData = {
@@ -55,54 +54,81 @@ export default function Share({ params: { userid } }){
             body: JSON.stringify(itemData)
         })
             .then(res => res.json())
-            .then(setWishlist)
+            .then(setFriendsItems)
             .catch(console.error)
     }
 
-    const handleShareList = () => {
-        console.log(userid)
-    }
-
-    console.log(friendDetails)
-    
-    return(
+    return (
         <main className="bg-white h-screen">
             <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-100 text-center bg-red-600">{friendDetails[0]?.firstname}'s wishlist:</h1>
-            <ul className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 space-y-4 p-4 max-h-fit col-start-1">
+            <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
                 {!friendsItems
                     ?
-                    <h2>Loading... </h2>
+                    <h2>Loading...</h2>
                     :
                     friendsItems.map((item) => {
                         const thisItem = item
-                        if (item.ispurchased === false) {
-                            return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 rounded-t-lg" onClick={() => showItemCard(thisItem)}>
-                                    <h3 className="text-center" >{item.itemname} </h3>
-
-                                    {show &&
-                                        <div className="block">
-                                            <p className="text-center"> Price:   ${item.itemprice}</p>
-                                            <a href={`${item.itemlink}`} className="flex justify-center text-blue-500">Purchase</a>
-                                            <p>
-                                                Already purchased?<button className="flex justify-center text-blue-600" onClick={() => handlePurchase(item)}>click here!</button>
-                                            </p>
-                                        </div>
-                                    }
-                                </li>
-                            )
+                        if (!isUser) {
+                            if (item.ispurchased === false) {
+                                return (
+                                    <li key={item.listid} className="items-center justify-center">
+                                        <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                            {item.itemname}
+                                        </Button>
+                                    </li>
+                                )
+                            }
+                            else {
+                                return (
+                                    <li key={item.listid}>
+                                        <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                            {item.itemname}
+                                        </Button>
+                                    </li>
+                                )
+                            }
                         }
                         else {
                             return (
-                                <li key={item.listid} className="group w-full px-4 py-2 border-b border-gray-200 bg-gray-400 text-zinc-200" onClick={() => showItemCard(thisItem)}>
-                                    <h3 className="text-center" >{item.itemname}</h3>
+                                <li key={item.listid} className="items-center justify-center">
+                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        {item.itemname}
+                                    </Button>
                                 </li>
                             )
                         }
-                    }
-                    )
+                    })
                 }
             </ul>
+            <Modal
+                width="40em"
+                open={open}
+                title={<h1 className={itemDetails?.ispurchased ? "text-zinc-400 text-center text-3xl" : "text-center text-3xl"}>{itemDetails?.itemname}</h1>}
+                onCancel={handleCancel}
+                className={itemDetails?.ispurchased && "text-zinc-400"}
+                footer={[
+                    <Flex wrap="no-wrap justify-between" gap="small">
+                        {itemDetails?.ispurchased ?
+                            <h2 className="text-xl text-center">This item has already been purchased.</h2>
+                            : <>
+                                <Button
+                                    key="link"
+                                    href={itemDetails?.itemlink}
+                                    type="primary"
+                                    className="bg-green-500"
+                                >
+                                    Purchase Here
+                                </Button>
+                                <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
+                                    Already Purchased?
+                                </Button>
+                            </>
+                        }
+                    </Flex>
+                ]}
+            >
+                <h2 className="text-center text-lg">Price: ${itemDetails?.itemprice}</h2>
+            </Modal>
         </main>
     )
 }

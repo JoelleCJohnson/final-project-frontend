@@ -12,9 +12,7 @@ export default function Signup() {
   const route = useRouter()
 
   const handleSignUp = (token) => {
-    console.log("handling signup")
     setToken(token.token)
-    setLoggedIn(true)
     route.push('/dashboard')
   }
 
@@ -34,11 +32,7 @@ export default function Signup() {
       // passCheck: e.target.repeat-password.value
     }
 
-    console.log(formData)
-    fetch(
-      'https://holiday-wishlist-jj.ue.r.appspot.com/signup'
-      // 'http://localhost:3001/signup'
-      , {
+    fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

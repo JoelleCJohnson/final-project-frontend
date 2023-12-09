@@ -2,8 +2,8 @@
 import Share from "./Share"
 
 
-export default function SharePage() {
+export default function SharePage({ params: {userid}}) {
     return (
-        <Share />
+        <Share userid={userid}/>
     )
 }
