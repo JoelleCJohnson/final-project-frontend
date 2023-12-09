@@ -86,12 +86,11 @@ export default function DisplayWishlist() {
 
     return (
         <>
-
             <section className="max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 ">
-        <div className="relative">
+                {/* <div className="relative">
 
-        {/* <Image src={"/caley-dimmock-_HCpwe1-Prc-unsplash.jpg"} alt="gifts in brown wrapping paper"  layout="fill" objectFit='cover'/> */}
-        </div>
+                    <Image src={"/caley-dimmock-_HCpwe1-Prc-unsplash.jpg"} alt="gifts in brown wrapping paper"  layout="fill" objectFit='cover'/>
+                </div> */}
                 <h2 className="flex text-center text-2xl font-bold sm:text-3xl">Your Wishlist</h2>
 
                 <p>
@@ -115,7 +114,7 @@ export default function DisplayWishlist() {
                             const thisItem = item
                             return (
                                 <li key={item.listid} className="items-center justify-center">
-                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                    <Button className="text-center text-zinc-800 text-lg w-full hover:!bg-red-700" type="primary" onClick={() => showModal(thisItem)} >
                                         {item.itemname}
                                     </Button>
                                 </li>

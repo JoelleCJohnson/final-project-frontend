@@ -28,7 +28,7 @@ export default function Share({ userid }) {
             .catch(console.error)
         if (jwt.decode(token)?.userid !== userid) {
             setIsUser(false)
-            console.log("Viewing someone elses wishlist")
+            console.log(jwt.decode(token)?.userid)
         }
     }, [userid])
 
@@ -61,7 +61,9 @@ export default function Share({ userid }) {
 
     return (
         <main className="bg-white h-screen">
-            <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-100 text-center bg-red-600">{friendDetails[0]?.firstname}'s wishlist:</h1>
+            <div className="bg-white">
+            <section className="max-w-x m-s mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto  max-w-md space-y-4 p-4">
+            <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-900 text-center">{friendDetails[0]?.firstname}'s wishlist:</h1>
             <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
                 {!friendsItems
                     ?
@@ -73,7 +75,7 @@ export default function Share({ userid }) {
                             if (item.ispurchased === false) {
                                 return (
                                     <li key={item.listid} className="items-center justify-center">
-                                        <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        <Button className="text-center text-zinc-800 text-lg w-full hover:!bg-red-700" type="primary" onClick={() => showModal(thisItem)} >
                                             {item.itemname}
                                         </Button>
                                     </li>
@@ -82,7 +84,7 @@ export default function Share({ userid }) {
                             else {
                                 return (
                                     <li key={item.listid}>
-                                        <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                        <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:!bg-zinc-300" type="primary" onClick={() => showModal(thisItem)} >
                                             {item.itemname}
                                         </Button>
                                     </li>
@@ -130,6 +132,8 @@ export default function Share({ userid }) {
             >
                 <h2 className="text-center text-lg">Price: ${itemDetails?.itemprice}</h2>
             </Modal>
+            </section>
+            </div>
         </main>
     )
 }

@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Login from './login/Login'
 import Image from 'next/image'
+import Footer from '@/components/Footer'
 
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <main className='bg-white h-screen'>
       <Header />
       <Login />
+      <Footer />
     </main>
   )
 }
