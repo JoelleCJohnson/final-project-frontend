@@ -18,7 +18,6 @@ export default function DisplayWishlist() {
     const [open, setOpen] = useState(false)
 
 
-
     useEffect(() => {
         if (!token) return
         fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {

@@ -1,18 +1,21 @@
 'use client'
+import jwt from "jsonwebtoken"
 import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { ItemContext } from "@/context/ItemsContext"
 import { Modal, Button, Flex } from "antd"
+import { UserContext } from "@/context/UserContext"
 
-export default function Share({  userid  }){
+export default function Share({ userid }) {
     const { setItemDetails, itemDetails } = useContext(ItemContext)
-    
+    const { token } = useContext(UserContext)
+
     const route = useRouter()
 
     const [friendsItems, setFriendsItems] = useState([])
     const [friendDetails, setFriendDetails] = useState([])
-    const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false)
+    const [isUser, setIsUser] = useState(true)
 
     useEffect(() => {
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
@@ -23,6 +26,9 @@ export default function Share({  userid  }){
             .then(res => res.json())
             .then(setFriendDetails)
             .catch(console.error)
+        if (jwt.decode(token)?.userid !== userid) {
+            setIsUser(false)
+        }
     }, [userid])
 
     const showModal = async (thisItem) => {
@@ -51,8 +57,8 @@ export default function Share({  userid  }){
             .then(setFriendsItems)
             .catch(console.error)
     }
-    
-    return(
+
+    return (
         <main className="bg-white h-screen">
             <h1 className="text-2xl font-bold sm:text-3xl text-bold text-shadow-m text-zinc-100 text-center bg-red-600">{friendDetails[0]?.firstname}'s wishlist:</h1>
             <ul className="w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8">
@@ -62,19 +68,30 @@ export default function Share({  userid  }){
                     :
                     friendsItems.map((item) => {
                         const thisItem = item
-                        if (item.ispurchased === false) {
-                            return (
-                                <li key={item.listid} className="items-center justify-center">
-                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
-                                        {item.itemname}
-                                    </Button>
-                                </li>
-                            )
+                        if (!isUser) {
+                            if (item.ispurchased === false) {
+                                return (
+                                    <li key={item.listid} className="items-center justify-center">
+                                        <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                            {item.itemname}
+                                        </Button>
+                                    </li>
+                                )
+                            }
+                            else {
+                                return (
+                                    <li key={item.listid}>
+                                        <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                            {item.itemname}
+                                        </Button>
+                                    </li>
+                                )
+                            }
                         }
                         else {
                             return (
-                                <li key={item.listid}>
-                                    <Button className="text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
+                                <li key={item.listid} className="items-center justify-center">
+                                    <Button className="text-center text-zinc-800 text-lg w-full hover:bg-green-500" type="primary" onClick={() => showModal(thisItem)} >
                                         {item.itemname}
                                     </Button>
                                 </li>
@@ -88,24 +105,23 @@ export default function Share({  userid  }){
                 open={open}
                 title={<h1 className={itemDetails?.ispurchased ? "text-zinc-400 text-center text-3xl" : "text-center text-3xl"}>{itemDetails?.itemname}</h1>}
                 onCancel={handleCancel}
-                className={itemDetails?.ispurchased && "text-zinc-400" }
+                className={itemDetails?.ispurchased && "text-zinc-400"}
                 footer={[
                     <Flex wrap="no-wrap justify-between" gap="small">
                         {itemDetails?.ispurchased ?
-                        <h2 className="text-xl text-center">This item has already been purchased.</h2>
-                    :<>
-                        <Button
-                            key="link"
-                            href={itemDetails?.itemlink}
-                            type="primary"
-                            loading={loading}
-                            className="bg-green-500"
-                        >
-                            Purchase Here
-                        </Button>
-                            <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
-                                Already Purchased?
-                            </Button>
+                            <h2 className="text-xl text-center">This item has already been purchased.</h2>
+                            : <>
+                                <Button
+                                    key="link"
+                                    href={itemDetails?.itemlink}
+                                    type="primary"
+                                    className="bg-green-500"
+                                >
+                                    Purchase Here
+                                </Button>
+                                <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
+                                    Already Purchased?
+                                </Button>
                             </>
                         }
                     </Flex>
