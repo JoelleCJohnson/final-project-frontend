@@ -19,8 +19,8 @@ body {
 }
  
 .gift-photo {
-  background-color: red;
-  /* background-image: url("/giftGiving.jpeg"); */
+  /* background-color: red; */
+  background-image: url("/kari-shea-KVl1jLknCv8-unsplash.jpg");
   background-size: cover;
   background-position: center;
 }
