@@ -3,7 +3,8 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useContext, useState } from "react"
 import { UserContext } from "@/context/UserContext"
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+
+
 
 export default function Login() {
 
@@ -50,7 +51,7 @@ export default function Login() {
     }
 
     return (
-        <main className="relative max-w-xl h-80">
+        <main className="relative flex flex-row max-w-xl h-80">
              
             <form className='mx-auto mb-0 mt-8 max-w-md space-y-4' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center'>
@@ -81,6 +82,7 @@ export default function Login() {
                 <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a>
                 </p>
             </form>
+            <section className='gift-photo'></section>
         </main>
     )
 }
