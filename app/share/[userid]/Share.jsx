@@ -1,19 +1,18 @@
 'use client'
-import jwt from "jsonwebtoken"
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { ItemContext } from "@/context/ItemsContext"
-import {Modal, Button, Flex} from "antd"
+import { Modal, Button, Flex } from "antd"
 
-export default function Share({ params: { userid } }){
-    const [friendsItems, setFriendsItems] = useState([])
-    const [friendDetails, setFriendDetails] = useState([])
-
-    const { show, setShow, setItemDetails } = useContext(ItemContext)
-
-
+export default function Share({  userid  }){
+    const { setItemDetails, itemDetails } = useContext(ItemContext)
+    
     const route = useRouter()
 
+    const [friendsItems, setFriendsItems] = useState([])
+    const [friendDetails, setFriendDetails] = useState([])
+    const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
@@ -25,6 +24,15 @@ export default function Share({ params: { userid } }){
             .then(setFriendDetails)
             .catch(console.error)
     }, [userid])
+
+    const showModal = async (thisItem) => {
+        await setItemDetails(thisItem);
+        setOpen(true)
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
 
     const handlePurchase = (item) => {
         const itemData = {
@@ -40,15 +48,9 @@ export default function Share({ params: { userid } }){
             body: JSON.stringify(itemData)
         })
             .then(res => res.json())
-            .then(setWishlist)
+            .then(setFriendsItems)
             .catch(console.error)
     }
-
-    const handleShareList = () => {
-        console.log(userid)
-    }
-
-    console.log(friendDetails)
     
     return(
         <main className="bg-white h-screen">
@@ -84,30 +86,28 @@ export default function Share({ params: { userid } }){
             <Modal
                 width="40em"
                 open={open}
-                title={<h1 className="text-center text-3xl">{itemDetails?.itemname}</h1>}
-                onOk={handleOk}
+                title={<h1 className={itemDetails?.ispurchased ? "text-zinc-400 text-center text-3xl" : "text-center text-3xl"}>{itemDetails?.itemname}</h1>}
                 onCancel={handleCancel}
+                className={itemDetails?.ispurchased && "text-zinc-400" }
                 footer={[
                     <Flex wrap="no-wrap justify-between" gap="small">
+                        {itemDetails?.ispurchased ?
+                        <h2 className="text-xl text-center">This item has already been purchased.</h2>
+                    :<>
                         <Button
                             key="link"
                             href={itemDetails?.itemlink}
                             type="primary"
                             loading={loading}
-                            onClick={handleOk}
                             className="bg-green-500"
                         >
                             Purchase Here
                         </Button>
-                        {
-                            !itemDetails?.ispurchased &&
                             <Button key="submit" type="primary" className="bg-green-500" onClick={handlePurchase}>
                                 Already Purchased?
                             </Button>
+                            </>
                         }
-                        <Button key="primary" className="bg-red-500 text-white" onClick={deleteButton}>
-                            Delete Item from Wishlist
-                        </Button>
                     </Flex>
                 ]}
             >
