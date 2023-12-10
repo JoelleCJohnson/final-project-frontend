@@ -2,7 +2,7 @@
 import jwt from 'jsonwebtoken'
 import { useContext, useEffect, useState, React } from 'react'
 import { ItemContext } from '@/context/ItemsContext'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { UserContext } from '@/context/UserContext'
 import { Button, Modal, Flex } from 'antd'
 import { CopyOutlined } from '@ant-design/icons'
@@ -13,10 +13,10 @@ export default function DisplayWishlist() {
     const { wishlist, setWishlist, setItemDetails, itemDetails } = useContext(ItemContext)
     const { token } = useContext(UserContext)
 
-    const route = useRouter()
-
-    const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false)
+    
+    const route = useRouter()
+    const pathname = usePathname()
 
 
     useEffect(() => {
@@ -66,23 +66,25 @@ export default function DisplayWishlist() {
     }
 
     return (
-        <>
-            <section className='max-w-xs mx-auto flex flex-col bg-zinc-100 rounded-lg items-center mx-auto mb-0 mt-8 max-w-md space-y-4 p-4 col-start-1 '>
-                {/* <div className='relative'>
+        <main className='flex flex-row bg-zinc-50'>
 
-                    <Image src={'/caley-dimmock-_HCpwe1-Prc-unsplash.jpg'} alt='gifts in brown wrapping paper'  layout='fill' objectFit='cover'/>
-                </div> */}
-                <h2 className='flex text-center text-2xl font-bold sm:text-3xl'>Your Wishlist</h2>
+            <div className='col-start-1'>
+                {/* image goes here */}
+            </div>
 
+            <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
+                
+                <h2 className='text-center text-2xl font-bold sm:text-3xl'>Your Wishlist</h2>
+                
                 <p>
                     Share your wishlist with this link:
                 </p>
-                <div className='flex'>
+                <div >
                     <button onClick={handleShareList} className='item-center text-blue-700 underline'>
                         https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
                     </button>
                     <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
-                        <CopyOutlined />
+                        <CopyOutlined className='m-2 p-1 rounded-sm bg-zinc-200'/>
                     </button>
                 </div>
 
@@ -114,15 +116,14 @@ export default function DisplayWishlist() {
                                 key='link'
                                 href={itemDetails?.itemlink}
                                 type='primary'
-                                loading={loading}
-                                className='bg-green-500'
+                                className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700'
                             >
                                 Purchase Here
                             </Button>
 
                             <Button
                                  key='primary' 
-                                 className='bg-red-500 text-white' 
+                                 className='bg-red-700 text-zinc-50 hover:!text-red-700 hover:!bg-zinc-50 hover:!border-red-700' 
                                  onClick={deleteButton}>
                                 Delete Item from Wishlist
                             </Button>
@@ -130,12 +131,8 @@ export default function DisplayWishlist() {
                     ]}
                 >
                     <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
-                    {/* <p>Some contents...</p>
-                                <p>Some contents...</p>
-                                <p>Some contents...</p>
-                            <p>Some contents...</p> */}
                 </Modal>
             </section >
-        </>
+        </main>
     )
 }
