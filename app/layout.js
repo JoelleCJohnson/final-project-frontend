@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className} >
         <UserProvider>
-
           <ItemsContext>
             {children}
           </ItemsContext>
