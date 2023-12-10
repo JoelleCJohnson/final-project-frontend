@@ -19,7 +19,6 @@ body {
 }
  
 .gift-photo {
-  /* background-color: red; */
   background-image: url("/kari-shea-KVl1jLknCv8-unsplash.jpg");
   background-size: cover;
   background-position: center;
@@ -27,6 +26,24 @@ body {
 
 .pine-border {
   background-image: url("/annie-spratt-Ee7C9fGiZI4-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.gift-box {
+  background-image: url("/GiftBox.avif");
+  background-size: cover;
+  background-position: center;
+}
+
+.gift-border {
+  background-image: url("/caley-dimmock-_HCpwe1-Prc-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.sideways-pine-border {
+  background-image: url("/sideways_pine.jpg");
   background-size: cover;
   background-position: center;
 }

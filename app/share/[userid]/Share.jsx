@@ -127,11 +127,11 @@ export default function Share({ userid }) {
                                             key='link'
                                             href={itemDetails?.itemlink}
                                             type='primary'
-                                            className='bg-green-500'
+                                            className='bg-green-500 hover:!bg-red-700'
                                         >
                                             Purchase Here
                                         </Button>
-                                        <Button key='submit' type='primary' className='bg-green-500' onClick={handlePurchase}>
+                                        <Button key='submit' type='primary' className='bg-green-500 hover:!bg-red-700' onClick={handlePurchase}>
                                             Already Purchased?
                                         </Button>
                                     </>
@@ -145,9 +145,8 @@ export default function Share({ userid }) {
                     <Modal
                         width='40em'
                         open={open}
-                        title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
+                        title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
                         onCancel={handleCancel}
-                        className={itemDetails?.ispurchased && 'text-zinc-400'}
                         footer={[
                             <Flex wrap='no-wrap justify-between' gap='small'>
                                 <>
@@ -155,11 +154,11 @@ export default function Share({ userid }) {
                                         key='link'
                                         href={itemDetails?.itemlink}
                                         type='primary'
-                                        className='bg-green-500'
+                                        className='bg-green-500 hover:!bg-red-700'
                                     >
                                         Purchase Here
                                     </Button>
-                                    <Button key='submit' type='primary' className='bg-green-500' onClick={handlePurchase}>
+                                    <Button key='submit' type='primary' className='bg-green-500 hover:!bg-red-700' onClick={handlePurchase}>
                                         Already Purchased?
                                     </Button>
                                 </>
