@@ -6,10 +6,10 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className='bg-white h-screen'>
+    <main className='bg-white h-screen justify-between'>
       <Header />
       <Login />
-      <Footer />
+      <Footer className="flex align-end justify-end"/>
     </main>
   )
 }
