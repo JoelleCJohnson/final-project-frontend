@@ -16,5 +16,17 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  
+}
+ 
+.gift-photo {
+  /* background-color: red; */
+  background-image: url("/kari-shea-KVl1jLknCv8-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.pine-border {
+  background-image: url("/annie-spratt-Ee7C9fGiZI4-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
 }

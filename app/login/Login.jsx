@@ -1,9 +1,10 @@
 'use client'
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { useContext, useState } from "react"
-import { UserContext } from "@/context/UserContext"
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
+import { useContext, useState } from 'react'
+import { UserContext } from '@/context/UserContext'
+import { useRouter } from 'next/navigation'
+
+
 
 export default function Login() {
 
@@ -13,7 +14,7 @@ export default function Login() {
     const route = useRouter()
 
     const handleLogin = async (token) => {
-        if(token.message){
+        if (token.message) {
             setError(token.message)
             return
         }
@@ -34,15 +35,13 @@ export default function Login() {
 
         fetch(
             'https://holiday-wishlist-jj.ue.r.appspot.com/login'
-            // 'http://localhost:3001/login'
             , {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            // mode: 'no-cors',
-            body: JSON.stringify(formData)
-        })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
             .then(res => res.json())
             .then(handleLogin)
             .catch(console.error)
@@ -50,37 +49,37 @@ export default function Login() {
     }
 
     return (
-        <main className="relative max-w-xl h-80">
-             
-            <form className='mx-auto mb-0 mt-8 max-w-md space-y-4' onSubmit={handleFormSubmit}>
+        <main className='flex justify-between max-w-auto h-auto bg-zinc-50'>
+
+            <form className='m-24 w-1/3 min-w-max lg:content-center' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center'>
-                    <h2 className='text-2xl font-bold sm:text-3xl'>Login:</h2>
+                    <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Login:</h2>
+                    <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a></p>
                 </div>
 
-                <div>
+                <div className='mb-2'>
                     <div className='mb-2 block'>
                         <Label htmlFor='email' value='Email:' />
                     </div>
-                    <TextInput id='email' name='email' type='email' placeholder='name@email.com' required />
+                    <TextInput id='email' name='email' type='email' placeholder='name@email.com' required shadow />
                 </div>
 
-                <div>
+                <div className='mb-2'>
                     <div className='mb-2 block'>
                         <Label htmlFor='password' value='Password:' />
                     </div>
-                    <TextInput id='password' name='password' type='password' required />
+                    <TextInput id='password' name='password' type='password' placeholder='Password' required shadow />
                 </div>
 
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 mb-2'>
                     <Checkbox id='remember' />
                     <Label htmlFor='remember'>Remember me</Label>
                 </div>
 
-                <Button className="bg-white text-red-500 border border-2 hover:text-white hover:border-gray-300 border-green-300 w-full" type='submit'>Submit</Button>
+                <Button className='mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50 shadow' type='submit'>Submit</Button>
 
-                <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a>
-                </p>
             </form>
+            <section className='gift-photo h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
         </main>
     )
 }
