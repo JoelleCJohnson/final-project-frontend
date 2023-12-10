@@ -66,7 +66,7 @@ export default function DisplayWishlist() {
     }
 
     return (
-        <main className='flex flex-row bg-zinc-50'>
+        <main className='flex flex-row bg-zinc-50 h-screen'>
 
             <div className='col-start-1'>
                 {/* image goes here */}
