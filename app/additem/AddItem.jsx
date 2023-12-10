@@ -36,7 +36,7 @@ export default function AddItem() {
         <main className='flex justify-between max-w-auto h-auto bg-zinc-50'>
 
             <div className='col-start-1'>
-                {/* image goes here */}
+            <section className='pine-border h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
             </div>
 
             <form onSubmit={handleAddItem} className='m-24 max-w-lg min-w-max lg:content-center'>

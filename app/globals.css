@@ -19,14 +19,13 @@ body {
 }
  
 .gift-photo {
-  /* background-color: red; */
-  background-image: url("/kari-shea-KVl1jLknCv8-unsplash.jpg");
+  background-image: url("/gift_with_tree.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .pine-border {
-  background-image: url("/annie-spratt-Ee7C9fGiZI4-unsplash.jpg");
+  background-image: url("/sideway_pine_border.jpg");
   background-size: cover;
   background-position: center;
 }
