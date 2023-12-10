@@ -16,6 +16,9 @@ export default function Share({ userid }) {
     const [friendDetails, setFriendDetails] = useState([])
     const [open, setOpen] = useState(false)
     const [isUser, setIsUser] = useState(true)
+    const decodedToken = jwt.decode(token)?.userid
+    console.log("Token id ---->", decodedToken)
+    console.log("userid ---->", userid)
 
     useEffect(() => {
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
@@ -26,7 +29,7 @@ export default function Share({ userid }) {
             .then(res => res.json())
             .then(setFriendDetails)
             .catch(console.error)
-        if (jwt.decode(token)?.userid !== userid) {
+        if (decodedToken != userid) {
             setIsUser(false)
         }
     }, [userid])
@@ -99,7 +102,7 @@ export default function Share({ userid }) {
                             else {
                                 return (
                                     <li key={item.listid} className='items-center justify-center'>
-                                        <Button className='text-center text-zinc-800 text-lg w-full hover:bg-green-500' type='primary' onClick={() => showModal(thisItem)} >
+                                        <Button className='text-center text-zinc-800 text-lg w-full hover:!bg-red-700' type='primary' onClick={() => showModal(thisItem)} >
                                             {item.itemname}
                                         </Button>
                                     </li>
@@ -108,17 +111,46 @@ export default function Share({ userid }) {
                         })
                     }
                 </ul>
-                <Modal
-                    width='40em'
-                    open={open}
-                    title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
-                    onCancel={handleCancel}
-                    className={itemDetails?.ispurchased && 'text-zinc-400'}
-                    footer={[
-                        <Flex wrap='no-wrap justify-between' gap='small'>
-                            {itemDetails?.ispurchased ?
-                                <h2 className='text-xl text-center'>This item has already been purchased.</h2>
-                                : <>
+                {(!isUser) ?
+                    <Modal
+                        width='40em'
+                        open={open}
+                        title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
+                        onCancel={handleCancel}
+                        className={itemDetails?.ispurchased && 'text-zinc-400'}
+                        footer={[
+                            <Flex wrap='no-wrap justify-between' gap='small'>
+                                {itemDetails?.ispurchased ?
+                                    <h2 className='text-xl text-center'>This item has already been purchased.</h2>
+                                    : <>
+                                        <Button
+                                            key='link'
+                                            href={itemDetails?.itemlink}
+                                            type='primary'
+                                            className='bg-green-500'
+                                        >
+                                            Purchase Here
+                                        </Button>
+                                        <Button key='submit' type='primary' className='bg-green-500' onClick={handlePurchase}>
+                                            Already Purchased?
+                                        </Button>
+                                    </>
+                                }
+                            </Flex>
+                        ]}
+                    >
+                        <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
+                    </Modal>
+                    :
+                    <Modal
+                        width='40em'
+                        open={open}
+                        title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
+                        onCancel={handleCancel}
+                        className={itemDetails?.ispurchased && 'text-zinc-400'}
+                        footer={[
+                            <Flex wrap='no-wrap justify-between' gap='small'>
+                                <>
                                     <Button
                                         key='link'
                                         href={itemDetails?.itemlink}
@@ -131,12 +163,12 @@ export default function Share({ userid }) {
                                         Already Purchased?
                                     </Button>
                                 </>
-                            }
-                        </Flex>
-                    ]}
-                >
-                    <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
-                </Modal>
+                            </Flex>
+                        ]}
+                    >
+                        <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
+                    </Modal>
+                }
             </section>
         </main>
     )
