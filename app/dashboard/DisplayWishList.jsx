@@ -42,17 +42,16 @@ export default function DisplayWishlist() {
         setOpen(false);
     };
 
-    const deleteButton = (item) => {
-        const deleteItem = {
-            id: item.listid
-        }
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+    const deleteButton = () => {
+        fetch(
+            // `https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${item.listid}`
+            `http://localhost:3000/dashboard/${itemDetails.listid}`
+            , {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
                 Authorization: token
-            },
-            body: JSON.stringify(deleteItem)
+            }
         })
             .then(res => res.json())
             .then(setWishlist)

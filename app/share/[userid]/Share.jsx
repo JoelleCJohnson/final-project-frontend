@@ -48,7 +48,10 @@ export default function Share({ userid }) {
             id: item.listid
         }
 
-        fetch('https://holiday-wishlist-jj.ue.r.appspot.com/dashboard', {
+        fetch(
+            // `https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${item.listid}`
+            `http://localhost:3000/dashboard/${userid}/${itemDetails.listid}`
+        , {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +68,7 @@ export default function Share({ userid }) {
         <main className='flex flex-row bg-zinc-50 h-screen'>
 
             <div className='col-start-1'>
-                {/* image goes here */}
+                <section className='gift-box h-auto w-3/4 max-w-lg min-w-max object-fill'></section>
             </div>
 
             <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
@@ -157,9 +160,6 @@ export default function Share({ userid }) {
                                         className='bg-green-500 hover:!bg-red-700'
                                     >
                                         Purchase Here
-                                    </Button>
-                                    <Button key='submit' type='primary' className='bg-green-500 hover:!bg-red-700' onClick={handlePurchase}>
-                                        Already Purchased?
                                     </Button>
                                 </>
                             </Flex>

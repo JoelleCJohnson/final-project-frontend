@@ -10,7 +10,7 @@ export default function CheckAuth(){
     const pathname = usePathname()
 
     useEffect(()=> {
-        if(!token && pathname.startsWith('/dashboard')){
+        if(!token && (pathname.startsWith('/dashboard') || pathname.startsWith('/share') || pathname.startsWith('/additem'))){
             const _token = sessionStorage.getItem('token')
             if(_token) {
                 setToken(_token)
