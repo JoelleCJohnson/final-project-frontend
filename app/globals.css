@@ -24,8 +24,29 @@ body {
   background-position: center;
 }
 
-.pine-border {
+.sideways-pine-border {
   background-image: url("/sideway_pine_border.jpg");
   background-size: cover;
   background-position: center;
 }
+
+.pine-border {
+  background-image: url("/pine_border.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.gift-box-border {
+  background-image: url("/gift_box_border.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.gift-box {
+  background-image: url("/GiftBox.avif");
+  background-size: cover;
+  background-position: center;
+}
+
+
+
