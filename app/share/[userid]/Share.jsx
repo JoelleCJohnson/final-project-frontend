@@ -48,7 +48,7 @@ export default function Share({ userid }) {
             id: item.listid
         }
 
-        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${item.listid}`, {
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${itemDetails.listid}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

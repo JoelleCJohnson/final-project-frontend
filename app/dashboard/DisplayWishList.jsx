@@ -43,10 +43,7 @@ export default function DisplayWishlist() {
     };
 
     const deleteButton = () => {
-        fetch(
-            // `https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${item.listid}`
-            `http://localhost:3000/dashboard/${itemDetails.listid}`
-            , {
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${itemDetails.listid}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
