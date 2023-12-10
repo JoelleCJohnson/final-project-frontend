@@ -51,7 +51,7 @@ export default function Login() {
     return (
         <main className='flex justify-between max-w-auto h-auto bg-zinc-50'>
 
-            <form className='m-24 w-1/3 min-w-max lg:content-center' onSubmit={handleFormSubmit}>
+            <form className='m-24 w-1/3 min-w-max lg:content-center justify-center items-center' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center'>
                     <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Login:</h2>
                     <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a></p>
@@ -79,7 +79,7 @@ export default function Login() {
                 <Button className='mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50 shadow' type='submit'>Submit</Button>
 
             </form>
-            <section className='gift-photo h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
+            <section className='gift-photo h-auto w-3/4 max-w-lg min-w-max object-fill'></section>
         </main>
     )
 }

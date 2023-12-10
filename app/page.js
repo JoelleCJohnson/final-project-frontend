@@ -9,7 +9,7 @@ export default function Home() {
     <main className='bg-white h-screen justify-between'>
       {/* <Header /> */}
       <Login />
-      <Footer className="flex align-end justify-end"/>
+      <Footer/>
     </main>
   )
 }

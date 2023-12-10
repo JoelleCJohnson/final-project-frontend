@@ -19,13 +19,7 @@ body {
 }
  
 .gift-photo {
-  background-image: url("/gift_with_tree.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.sideways-pine-border {
-  background-image: url("/sideway_pine_border.jpg");
+  background-image: url("/kari-shea-KVl1jLknCv8-unsplash.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -36,17 +30,21 @@ body {
   background-position: center;
 }
 
-.gift-box-border {
-  background-image: url("/gift_box_border.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
 .gift-box {
   background-image: url("/GiftBox.avif");
   background-size: cover;
   background-position: center;
 }
 
+.gift-border {
+  background-image: url("/caley-dimmock-_HCpwe1-Prc-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
+.sideways-pine-border {
+  background-image: url("/sideways_pine.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
