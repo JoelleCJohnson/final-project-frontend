@@ -15,14 +15,15 @@ export default function CheckAuth(){
             if(_token) {
                 setToken(_token)
             } 
-            else{
-                router.push('/signup')
+            else {
+                if (!pathname.startsWith('/share')){
+                    router.push('/signup')
+                }
             }
         }
-        if(token && !pathname.startsWith('/dashboard')){
+        if(token && (pathname.startsWith('/signup') || pathname === '/')){
             router.push('/dashboard')
         }
     }, [token, pathname])
-
     return null
 }

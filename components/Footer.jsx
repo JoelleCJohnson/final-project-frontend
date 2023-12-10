@@ -6,7 +6,7 @@ export default function Footer() {
       <span className='text-sm text-gray-100 sm:text-center'>
         © 2023{' '}
         <a href='https://www.linkedin.com/in/joelle-c-johnson' className='hover:underline'>
-          Joelle C Johnson™
+          Joelle C Johnson
         </a>
         . All Rights Reserved.
       </span>

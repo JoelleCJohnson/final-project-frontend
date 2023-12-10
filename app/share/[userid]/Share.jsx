@@ -48,10 +48,7 @@ export default function Share({ userid }) {
             id: item.listid
         }
 
-        fetch(
-            // `https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${item.listid}`
-            `http://localhost:3000/dashboard/${userid}/${itemDetails.listid}`
-        , {
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${item.listid}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

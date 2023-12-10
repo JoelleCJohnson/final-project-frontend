@@ -112,7 +112,7 @@ export default function DisplayWishlist() {
                     title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
                     onCancel={handleCancel}
                     footer={[
-                        <Flex wrap='no-wrap justify-between' gap='small'>
+                        <div className='flex no-wrap justify-between w-full' >
                             <Button
                                 key='link'
                                 href={itemDetails?.itemlink}
@@ -128,7 +128,7 @@ export default function DisplayWishlist() {
                                 onClick={deleteButton}>
                                 Delete Item from Wishlist
                             </Button>
-                        </Flex>
+                        </div>
                     ]}
                 >
                     <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
