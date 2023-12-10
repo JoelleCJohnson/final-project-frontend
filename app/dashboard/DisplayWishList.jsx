@@ -14,7 +14,7 @@ export default function DisplayWishlist() {
     const { token } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
-    
+
     const route = useRouter()
     const pathname = usePathname()
 
@@ -66,16 +66,17 @@ export default function DisplayWishlist() {
     }
 
     return (
-        <main className='flex flex-row bg-zinc-50'>
+        <main className='flex flex-row bg-zinc-50 h-screen'>
 
             <div className='col-start-1'>
-            <section className='pine-border h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
+            <section className='gift-photo h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
+
             </div>
 
             <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
-                
+
                 <h2 className='text-center text-2xl font-bold sm:text-3xl'>Your Wishlist</h2>
-                
+
                 <p>
                     Share your wishlist with this link:
                 </p>
@@ -84,7 +85,7 @@ export default function DisplayWishlist() {
                         https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
                     </button>
                     <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
-                        <CopyOutlined className='m-2 p-1 rounded-sm bg-zinc-200'/>
+                        <CopyOutlined className='m-2 p-1 rounded-sm bg-zinc-200' />
                     </button>
                 </div>
 
@@ -122,9 +123,9 @@ export default function DisplayWishlist() {
                             </Button>
 
                             <Button
-                                 key='primary' 
-                                 className='bg-red-700 text-zinc-50 hover:!text-red-700 hover:!bg-zinc-50 hover:!border-red-700' 
-                                 onClick={deleteButton}>
+                                key='primary'
+                                className='bg-red-700 text-zinc-50 hover:!text-red-700 hover:!bg-zinc-50 hover:!border-red-700'
+                                onClick={deleteButton}>
                                 Delete Item from Wishlist
                             </Button>
                         </Flex>
