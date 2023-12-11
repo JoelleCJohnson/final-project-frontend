@@ -17,6 +17,8 @@ export default function Share({ userid }) {
     const [open, setOpen] = useState(false)
     const [isUser, setIsUser] = useState(true)
     const decodedToken = jwt.decode(token)?.userid
+    console.log("Token id ---->", decodedToken)
+    console.log("userid ---->", userid)
 
     useEffect(() => {
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
