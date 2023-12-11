@@ -116,20 +116,19 @@ export default function Share({ userid }) {
                             onCancel={handleCancel}
                             className={itemDetails?.ispurchased && 'text-zinc-400'}
                             footer={[
-                                <Flex wrap='no-wrap justify-between' gap='small'>
+                                <Flex wrap='no-wrap justify-between w-full'>
                                     {itemDetails?.ispurchased ?
                                         <h2 className='text-xl text-center'>This item has already been purchased.</h2>
                                         : <>
-
                                             <Button
                                                 key='link'
                                                 href={itemDetails?.itemlink}
                                                 type='primary'
-                                                className='bg-green-500 hover:!bg-red-700'
+                                                className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700'
                                             >
                                                 Purchase Here
                                             </Button>
-                                            <Button key='submit' type='primary' className='bg-green-500 hover:!bg-red-700' onClick={handlePurchase}>
+                                            <Button key='submit' type='primary' className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700' onClick={handlePurchase}>
                                                 Already Purchased?
                                             </Button>
                                         </>
@@ -146,8 +145,7 @@ export default function Share({ userid }) {
                             title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
                             onCancel={handleCancel}
                             footer={[
-                                <Flex wrap='no-wrap justify-between' gap='small'>
-                                    <>
+                                <Flex wrap='no-wrap justify-between w-full' gap='small'>
                                         <Button
                                             key='link'
                                             href={itemDetails?.itemlink}
@@ -156,7 +154,6 @@ export default function Share({ userid }) {
                                         >
                                             Purchase Here
                                         </Button>
-                                    </>
                                 </Flex>
                             ]}
                         >
