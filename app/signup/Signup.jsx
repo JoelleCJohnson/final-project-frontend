@@ -46,7 +46,7 @@ export default function Signup() {
 
   return (
     <main className='flex justify-around lg:ml-0 lg:justify-between max-w-auto h-auto bg-zinc-50'>
-      <form className='m-24 w-1/2 justify-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
+      <form className=' w-1/2 justify-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
         <div className='mx-auto max-w-lg text-center'>
           <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Sign Up:</h2>
           <p className='text-center'>Already have an account? <a href='/' className='text-blue-600 underline'>Log in</a></p>

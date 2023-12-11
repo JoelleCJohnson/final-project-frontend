@@ -3,6 +3,7 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
 import { useContext, useState } from 'react'
 import { UserContext } from '@/context/UserContext'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 
 
@@ -53,6 +54,9 @@ export default function Login() {
 
             <form className='m-24 w-1/2 min-w-max content-center justify-center items-center sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center'>
+                    <div>
+                        <Image src='/RedWishLily.png' width={190} height={0} alt='WishLily logo written in script' />
+                    </div>
                     <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Login:</h2>
                     <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a></p>
                 </div>
