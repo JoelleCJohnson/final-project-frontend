@@ -130,7 +130,7 @@ export default function Signup() {
 
         <Button className='shadow mt-6 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>Register new account</Button>
       </form>
-      <section className='gift-photo h-screen w-1/2 sm:block hidden min-w-max object-fill'></section>
+      <section className='gift-photo h-auto w-1/2 sm:block hidden min-w-max object-fill'></section>
     </main>
   );
 }
