@@ -64,66 +64,48 @@ export default function DisplayWishlist() {
     return (
         <main className='flex flex-row bg-zinc-50 h-screen w-screen justify-center content-center'>
 
-            <section className='wishlist h-screen w-1/2 sm:block min-w-max object-fill justify-center w-1/2'></section >
+            <section className='wishlist h-screen w-1/2 sm:block hidden min-w-max object-fill justify-center w-1/2'></section >
 
-                <section className='flex flex-col rounded-sm items-center content-center  mx-auto max-w-md space-y-4 p-4 h-screen'>
-                    <h2 className='text-center text-2xl font-bold sm:text-3xl'>Your Wishlist</h2>
-                    <p>
-                        Share your wishlist with this link:
-                    </p>
-                    <div >
-                        <a href={`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`} className='item-center text-blue-700 underline'>
-                            https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
-                        </a>
-                        <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
-                            <CopyOutlined className='m-2 p-1 rounded-sm bg-zinc-200' />
-                        </button>
-                    </div>
+            <section className='flex flex-col rounded-sm items-center content-center  mx-auto max-w-md space-y-4 p-4 h-screen'>
+                <h2 className='text-center text-2xl font-bold sm:text-3xl'>Your Wishlist</h2>
+                <p>
+                    Share your wishlist with this link:
+                </p>
+                <div >
+                    <a href={`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`} className='item-center text-blue-700 underline'>
+                        https://final-project-630f3.web.app/share/{jwt.decode(token)?.userid}
+                    </a>
+                    <button onClick={() => navigator.clipboard.writeText(`https://final-project-630f3.web.app/share/${jwt.decode(token)?.userid}`)}>
+                        <CopyOutlined className='m-2 p-1 rounded-sm bg-zinc-200' />
+                    </button>
+                </div>
 
-                    <ul className='w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8 shadow sm:text-xs'>
-                        {!wishlist
-                            ?
-                            <h2>Loading...</h2>
-                            :
-                            wishlist.map((item) => {
-                                const thisItem = item
-                                return (
-                                    <li key={item.listid} className='items-center justify-center'>
-                                        <Button className='text-center text-zinc-800 text-lg w-full hover:!bg-red-700' type='primary' onClick={() => showModal(thisItem)} >
-                                            {item.itemname}
-                                        </Button>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-                    <Modal
-                        width='40em'
-                        open={open}
-                        title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
-                        onCancel={handleCancel}
-                        footer={[
-                            <Flex className='flex no-wrap justify-between w-full' >
-                                <Button
-                                    key='link'
-                                    href={itemDetails?.itemlink}
-                                    type='primary'
-                                    className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700'
-                                >
-                                    Purchase Here
-                                </Button>
-
-                                <Button
-                                    key='primary'
-                                    className='bg-red-700 text-zinc-50 hover:!text-red-700 hover:!bg-zinc-50 hover:!border-red-700'
-                                    onClick={deleteButton}>
-                                    Delete Item from Wishlist
-                                </Button>
-                            </Flex>
-                        ]}
-                    >
-                        <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
-                    </Modal>
+                <ul className='w-3/4 sm:w-96 text-xs md:text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8 min-w-min shadow'>
+                    {!wishlist
+                        ?
+                        <h2>Loading...</h2>
+                        :
+                        wishlist.map((item) => {
+                            const thisItem = item
+                            return (
+                                <li key={item.listid} className='flex justify-between content-center items-center rounded-md sm:w-96 flex flex-row text-center text-md space-x-4 border border-red-500 border-1 p-2 m-2 bg-zinc-50 shadow' type='primary' >
+                                    <div className='w-1/4'>
+                                        {item.itemname}
+                                    </div>
+                                    <div className='w-1/4'>
+                                        ${item.itemprice}
+                                    </div>
+                                    <a className='border border-1 border-green-700 rounded-xl hover:!text-green-700 p-1 shadow' target='_blank' href={item?.itemlink}>
+                                        Buy
+                                    </a>
+                                    <button className='border border-1 border-red-700 rounded-xl hover:!text-red-700 p-1 shadow' onClick={deleteButton}>
+                                        Delete
+                                    </button>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
             </section>
         </main>
     )
