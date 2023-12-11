@@ -1,9 +1,9 @@
 'use client'
 import { useContext } from 'react'
-import { UserContext } from '@/context/UserContext';
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { UserContext } from '@/context/UserContext'
+import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Signup() {
 
@@ -45,8 +45,8 @@ export default function Signup() {
   }
 
   return (
-    <main className='flex justify-between max-w-auto h-auto bg-zinc-50'>
-      <form className='m-24 w-2/4 min-w-max' onSubmit={handleFormSubmit}>
+    <main className='flex justify-around lg:ml-0 lg:justify-between max-w-auto h-auto bg-zinc-50'>
+      <form className='m-24 w-2/4 min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
         <div className='mx-auto max-w-lg text-center'>
           <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Sign Up:</h2>
           <p className='text-center'>Already have an account? <a href='/' className='text-blue-600 underline'>Log in</a></p>
@@ -127,7 +127,7 @@ export default function Signup() {
 
         <Button className='shadow mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>Register new account</Button>
       </form>
-      <section className='gift-photo h-auto w-3/4 max-w-lg min-w-max object-fill'></section>
+      <section className='gift-photo h-auto  w-1/2 sm:block hidden min-w-max object-fill'></section>
     </main>
   );
 }

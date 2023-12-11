@@ -33,13 +33,11 @@ export default function AddItem() {
     }
 
     return (
-        <main className='flex justify-between max-w-auto h-auto bg-zinc-50'>
+        <main className='flex justify-around lg:justify-start lg:ml-0 lg:justify-between w-screen h-auto bg-zinc-50'>
 
-            <div className='col-start-1'>
-            <section className='pine-border h-screen w-2/4 max-w-lg min-w-max object-fill'></section>
-            </div>
+            <section className='gift-box h-screen min-w-max md:w-1/2 sm:block hidden min-w-max object-fill'></section>
 
-            <form onSubmit={handleAddItem} className='m-24 max-w-lg min-w-max lg:content-center'>
+            <form className='m-24 w-1/2 min-w-min sm:max-w-fit sm:w-1/4' onSubmit={handleAddItem}>
                 <div className='mx-auto max-w-lg text-center'>
                     <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Add an Item to Your Wishlist</h2>
                 </div>

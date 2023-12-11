@@ -14,15 +14,15 @@ export default function Header() {
     return (
         <header className='flex justify-between text-center bg-red-700'>
             
-            <div className='p-8 lg:items-center'>
+            <div className='p-8'>
                 <Image src='/Wishlily.png' width={190} height={0} alt='WishLily logo written in script' />
             </div>
 
-            <div className='pt-10 pr-6'>
+            <div className='w-1/3 sm:flex justify-end items-center'>
                 {((token && pathname.startsWith('/add')) || (token && pathname.startsWith('/share'))) &&
                     <>
                         <Button
-                            className='m-4 bg-zinc-50 text-red-700 shadow text-xs rounded-3xl p-x-2 hover:!text-red-700 hover:!font-bold hover:!border-red-700'
+                            className='m-2 bg-zinc-50 text-red-700 shadow text-xs font-bold rounded-3xl p-x-2 hover:!text-red-700 hover:!font-extrabold hover:!border-red-700'
                             onClick={()=> {
                                 route.push('/dashboard')
                             }}
@@ -31,7 +31,7 @@ export default function Header() {
                         </Button>
 
                         <Button
-                            className='m-4 bg-zinc-50 text-red-700 shadow text-xs rounded-3xl p-x-2 hover:!text-red-700 hover:!font-bold hover:!border-red-700'
+                            className='m-2 bg-zinc-50 text-red-700 shadow text-xs font-bold rounded-3xl p-x-2 hover:!text-red-700 hover:!font-extrabold hover:!border-red-700'
                             onClick={() => {
                                 sessionStorage.clear()
                                 route.push('/')

@@ -63,12 +63,8 @@ export default function DisplayWishlist() {
 
     return (
         <main className='flex flex-row bg-zinc-50 h-screen'>
-
-            <div className='col-start-1'>
-      
-            <section className='gift-box h-auto w-3/4 max-w-lg min-w-max object-fill'></section>
-
-            </div>
+        
+                <section className='gift-box h-screen w-1/2 sm:block hidden min-w-max object-fill'></section>
 
             <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
 
