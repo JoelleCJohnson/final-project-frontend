@@ -48,5 +48,11 @@ body {
   background-position: center;
 }
 
+.brown-giftbox {
+  background-image: url("/brown_giftbox.avif");
+  background-size: cover;
+  background-position: center;
+}
+
 
 
