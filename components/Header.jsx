@@ -15,7 +15,7 @@ export default function Header() {
         <header className='flex justify-between text-center bg-zinc-50 border-b-2 border-red-700 shadow'>
             
             <div>
-                <Image src='/RedWishLily.png' width={190} height={0} alt='WishLily logo written in script' />
+                <img src='/RedWishLily.png' className='w-1/4 ml-20 hover:cursor-pointer' alt='WishLily logo written in script' onClick={() => route.push('/dashboard')} />
             </div>
 
             <div className='w-1/3 sm:flex justify-end items-center'>
