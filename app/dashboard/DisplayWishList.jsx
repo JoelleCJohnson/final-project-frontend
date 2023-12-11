@@ -95,10 +95,10 @@ export default function DisplayWishlist() {
                                     <div className='w-1/4'>
                                         ${item.itemprice}
                                     </div>
-                                    <a className='border border-1 border-green-700 rounded-xl hover:!text-green-700 p-1 shadow' target='_blank' href={item?.itemlink}>
+                                    <a className='text-blue-500 underline rounded-xl hover:!text-green-700 p-1' target='_blank' href={item?.itemlink}>
                                         Buy
                                     </a>
-                                    <button className='border border-1 border-red-700 rounded-xl hover:!text-red-700 p-1 shadow' onClick={deleteButton}>
+                                    <button className='text-red-700 underline rounded-xl hover:!text-red-700 p-1' onClick={deleteButton}>
                                         Delete
                                     </button>
                                 </li>
