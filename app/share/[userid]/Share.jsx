@@ -61,7 +61,7 @@ export default function Share({ userid }) {
     return (
         <main className='flex flex-row bg-zinc-50 h-screen w-screen justify-center content-center'>
 
-            <section className='wishlist h-screen w-1/2 sm:block min-w-max object-fill justify-center w-1/2'></section>
+            <section className='wishlist h-screen w-1/2 sm:block hidden min-w-max object-fill justify-center w-1/2'></section>
 
             <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
                 <h2 className='text-center text-2xl font-bold sm:text-3xl'>{friendDetails[0]?.firstname}'s wishlist:</h2>
