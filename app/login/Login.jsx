@@ -51,6 +51,9 @@ export default function Login() {
 
             <form className='m-24 w-1/2 min-w-max content-center justify-center items-center sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center justify-center'>
+                    <div className='flex justify-center w-fill w-3/4'>
+                        <img src='/RedWishLily.png' className='w-1/2 ml-28' alt='WishLily logo written in script' />
+                    </div>
                     <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Login:</h2>
                     <p> Don't have an account? <a href='/signup' className='text-blue-600 underline'>Sign up</a></p>
                 </div>
