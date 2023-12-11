@@ -24,8 +24,8 @@ body {
   background-position: center;
 }
 
-.pine-border {
-  background-image: url("/pine_border.jpg");
+.display-background {
+  background-image: url("/displayBackground.avif");
   background-size: cover;
   background-position: center;
 }

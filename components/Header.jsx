@@ -12,7 +12,7 @@ export default function Header() {
     const pathname = usePathname()
 
     return (
-        <header className='flex justify-between text-center bg-zinc-50'>
+        <header className='flex justify-between text-center bg-zinc-50 border-b-2 border-red-700 shadow'>
             
             <div>
                 <Image src='/RedWishLily.png' width={190} height={0} alt='WishLily logo written in script' />
