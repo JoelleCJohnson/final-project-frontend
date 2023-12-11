@@ -66,7 +66,7 @@ export default function AddItem() {
                     <TextInput id='itemPrice' name='itemPrice' step='0.01' min='0' type='number' placeholder='Add the price for your wishlist item here' required shadow />
                 </div>
 
-                <Button className='shadow mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>
+                <Button className='shadow mt-6 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>
                     Add to Wishlist
                 </Button>
             </form>

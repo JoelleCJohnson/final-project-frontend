@@ -46,7 +46,7 @@ export default function Signup() {
 
   return (
     <main className='flex justify-around lg:ml-0 lg:justify-between max-w-auto h-auto bg-zinc-50'>
-      <form className='m-24 w-2/4 min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
+      <form className='m-24 w-1/2 justify-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
         <div className='mx-auto max-w-lg text-center'>
           <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Sign Up:</h2>
           <p className='text-center'>Already have an account? <a href='/' className='text-blue-600 underline'>Log in</a></p>
@@ -125,7 +125,7 @@ export default function Signup() {
           </Label>
         </div>
 
-        <Button className='shadow mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>Register new account</Button>
+        <Button className='shadow mt-6 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50' type='submit'>Register new account</Button>
       </form>
       <section className='gift-photo h-auto  w-1/2 sm:block hidden min-w-max object-fill'></section>
     </main>

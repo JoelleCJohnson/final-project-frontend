@@ -72,7 +72,7 @@ export default function Share({ userid }) {
 
                 <h2 className='font-great-vibes text-center text-2xl font-bold sm:text-3xl'>{friendDetails[0]?.firstname}'s wishlist:</h2>
 
-                <ul className='w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8'>
+                <ul className='w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8 shadow'>
                     {!friendsItems
                         ?
                         <h2>Loading...</h2>

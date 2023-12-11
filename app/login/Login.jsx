@@ -76,7 +76,7 @@ export default function Login() {
                     <Label htmlFor='remember'>Remember me</Label>
                 </div>
 
-                <Button className='mt-4 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50 shadow' type='submit'>Submit</Button>
+                <Button className='mt-6 bg-white text-red-500 border border-2 border-green-500 w-full hover:!bg-green-700 hover:!text-zinc-50 shadow' type='submit'>Submit</Button>
 
             </form>
             <section className='gift-photo h-auto w-1/2 sm:block hidden min-w-max object-fill'></section>
