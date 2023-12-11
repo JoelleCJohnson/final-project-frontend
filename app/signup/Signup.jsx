@@ -2,8 +2,8 @@
 import { useContext } from 'react'
 import { UserContext } from '@/context/UserContext'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Signup() {
 
@@ -29,7 +29,6 @@ export default function Signup() {
       state: e.target.state.value,
       zipCode: e.target.zipCode.value,
       password: e.target.password2.value
-      // passCheck: e.target.repeat-password.value
     }
 
     fetch('https://holiday-wishlist-jj.ue.r.appspot.com/', {
@@ -45,12 +44,13 @@ export default function Signup() {
   }
 
   return (
-    <main className='flex justify-around lg:ml-0 lg:justify-between max-w-auto h-auto bg-zinc-50'>
-      <form className=' w-1/2 justify-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
-        <div>
-          <img src='/RedWishLily.png' width={190} height={0} alt='WishLily logo written in script' />
+    <main className='flex justify-around lg:ml-0 lg:justify-between w-screen h-auto bg-zinc-50'>
+
+      <form className='m-24 w-1/2 justify-center items-center content-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
+        <div className='mx-auto max-w-lg text-center justify-center'>
+        <div className='flex justify-center w-fill w-3/4'>
+          <img src='/RedWishLily.png' className='w-1/2 ml-28' alt='WishLily logo written in script' />
         </div>
-        <div className='mx-auto max-w-lg text-center'>
           <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Sign Up:</h2>
           <p className='text-center'>Already have an account? <a href='/' className='text-blue-600 underline'>Log in</a></p>
         </div>
