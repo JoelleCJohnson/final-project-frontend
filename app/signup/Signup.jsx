@@ -80,28 +80,28 @@ export default function Signup() {
           <div className='mb-2 block'>
             <Label htmlFor='streetAddress' value='Address' />
           </div>
-          <TextInput id='streetAddress' type='text' placeholder='Street Address' required shadow />
+          <TextInput id='streetAddress' type='text' placeholder='Street Address' shadow />
         </div>
 
         <div className='mb-2'>
           <div className='mb-2 block'>
             <Label htmlFor='city' value='City' />
           </div>
-          <TextInput id='city' type='text' placeholder='City' required shadow />
+          <TextInput id='city' type='text' placeholder='City' shadow />
         </div>
 
         <div className='mb-2'>
           <div className='mb-2 block'>
             <Label htmlFor='state' value='State' />
           </div>
-          <TextInput id='state' type='text' placeholder='State (2 letters)' required shadow />
+          <TextInput id='state' type='text' placeholder='State (2 letters)' shadow />
         </div>
 
         <div className='mb-2'>
           <div className='mb-2 block'>
             <Label htmlFor='zipCode' value='Zip Code' />
           </div>
-          <TextInput id='zipCode' type='text' placeholder='Zip Code' required shadow />
+          <TextInput id='zipCode' type='text' placeholder='Zip Code' shadow />
         </div>
 
         <div className='mb-2'>

@@ -33,7 +33,7 @@ export default function AddItem() {
     }
 
     return (
-        <main className='flex justify-around lg:justify-start lg:ml-0 lg:justify-between w-screen h-auto bg-zinc-50'>
+        <main className='flex justify-around lg:justify-start lg:ml-0 lg:justify-between w-screen h-screen bg-zinc-50'>
 
             <section className='gift-box h-screen min-w-max md:w-1/2 sm:block hidden min-w-max object-fill'></section>
 

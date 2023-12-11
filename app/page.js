@@ -1,6 +1,5 @@
 import Header from '@/components/Header'
 import Login from './login/Login'
-import Image from 'next/image'
 import Footer from '@/components/Footer'
 
 
