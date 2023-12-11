@@ -65,7 +65,7 @@ export default function Share({ userid }) {
         <main className='flex flex-row bg-zinc-50 h-screen'>
 
             <div className='col-start-1'>
-                <section className='gift-photo h-auto w-1/2 sm:block hidden min-w-max object-fill'></section>
+                <section className='wishlist h-auto w-1/2 sm:block hidden min-w-max object-fill'></section>
             </div>
 
             <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>

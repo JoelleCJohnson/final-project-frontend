@@ -54,5 +54,11 @@ body {
   background-position: center;
 }
 
+.wishlist {
+  background-image: url("/christmas-list.avif");
+  background-size: cover;
+  background-position: center;
+}
+
 
 
