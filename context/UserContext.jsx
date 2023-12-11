@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const UserContext = createContext(null)
 
@@ -16,6 +16,11 @@ export default function UserProvider({ children }){
         }
         setToken(data)
     }
+
+    useEffect(() =>{
+        const data = sessionStorage.getItem("token")
+        setToken(data)
+    }, [])
 
     
     return(

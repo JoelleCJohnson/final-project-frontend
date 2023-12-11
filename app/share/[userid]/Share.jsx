@@ -16,9 +16,6 @@ export default function Share({ userid }) {
     const [friendDetails, setFriendDetails] = useState([])
     const [open, setOpen] = useState(false)
     const [isUser, setIsUser] = useState(true)
-    const decodedToken = jwt.decode(token)?.userid
-    console.log("Token id ---->", decodedToken)
-    console.log("userid ---->", userid)
 
     useEffect(() => {
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/share/${userid}`)
@@ -29,10 +26,9 @@ export default function Share({ userid }) {
             .then(res => res.json())
             .then(setFriendDetails)
             .catch(console.error)
-        if (decodedToken != userid) {
-            setIsUser(false)
-        }
-    }, [userid])
+            const decodedToken = jwt.decode(token)?.userid
+            setIsUser(decodedToken == userid)
+    }, [userid, token])
 
     const showModal = async (thisItem) => {
         await setItemDetails(thisItem);
@@ -66,37 +62,18 @@ export default function Share({ userid }) {
 
             <section className='wishlist h-screen w-1/2 sm:block min-w-max object-fill justify-center w-1/2'></section>
 
-                <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
-                    <h2 className='text-center text-2xl font-bold sm:text-3xl'>{friendDetails[0]?.firstname}'s wishlist:</h2>
+            <section className='flex flex-col rounded-sm items-center mx-auto max-w-md space-y-4 p-4 h-screen'>
+                <h2 className='text-center text-2xl font-bold sm:text-3xl'>{friendDetails[0]?.firstname}'s wishlist:</h2>
 
-                    <ul className='w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8 shadow'>
-                        {!friendsItems
-                            ?
-                            <h2>Loading...</h2>
-                            :
-                            friendsItems.map((item) => {
-                                const thisItem = item
-                                if (!isUser) {
-                                    if (item.ispurchased === false) {
-                                        return (
-                                            <li key={item.listid} className='items-center justify-center'>
-                                                <Button className='text-center text-zinc-800 text-lg w-full hover:!bg-red-700' type='primary' onClick={() => showModal(thisItem)} >
-                                                    {item.itemname}
-                                                </Button>
-                                            </li>
-                                        )
-                                    }
-                                    else {
-                                        return (
-                                            <li key={item.listid} className='items-center justify-center'>
-                                                <Button className='text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:!bg-zinc-300' type='primary' onClick={() => showModal(thisItem)} >
-                                                    {item.itemname}
-                                                </Button>
-                                            </li>
-                                        )
-                                    }
-                                }
-                                else {
+                <ul className='w-48 text-lg items-center font-medium text-gray-900 bg-zinc-100 border border-gray-200 rounded-lg m-8 shadow'>
+                    {!friendsItems
+                        ?
+                        <h2>Loading...</h2>
+                        :
+                        friendsItems.map((item) => {
+                            const thisItem = item
+                            if (!isUser) {
+                                if (item.ispurchased === false) {
                                     return (
                                         <li key={item.listid} className='items-center justify-center'>
                                             <Button className='text-center text-zinc-800 text-lg w-full hover:!bg-red-700' type='primary' onClick={() => showModal(thisItem)} >
@@ -105,61 +82,80 @@ export default function Share({ userid }) {
                                         </li>
                                     )
                                 }
-                            })
-                        }
-                    </ul>
-                    {(!isUser) ?
-                        <Modal
-                            width='40em'
-                            open={open}
-                            title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
-                            onCancel={handleCancel}
-                            className={itemDetails?.ispurchased && 'text-zinc-400'}
-                            footer={[
-                                <Flex wrap='no-wrap justify-between w-full'>
-                                    {itemDetails?.ispurchased ?
-                                        <h2 className='text-xl text-center'>This item has already been purchased.</h2>
-                                        : <>
-                                            <Button
-                                                key='link'
-                                                href={itemDetails?.itemlink}
-                                                type='primary'
-                                                className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700'
-                                            >
-                                                Purchase Here
+                                else {
+                                    return (
+                                        <li key={item.listid} className='items-center justify-center'>
+                                            <Button className='text-center text-lg text-zinc-100 bg-zinc-300 w-full hover:!bg-zinc-300' type='primary' onClick={() => showModal(thisItem)} >
+                                                {item.itemname}
                                             </Button>
-                                            <Button key='submit' type='primary' className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700' onClick={handlePurchase}>
-                                                Already Purchased?
-                                            </Button>
-                                        </>
-                                    }
-                                </Flex>
-                            ]}
-                        >
-                            <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
-                        </Modal>
-                        :
-                        <Modal
-                            width='40em'
-                            open={open}
-                            title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
-                            onCancel={handleCancel}
-                            footer={[
-                                <Flex wrap='no-wrap justify-between w-full' gap='small'>
+                                        </li>
+                                    )
+                                }
+                            }
+                            else {
+                                return (
+                                    <li key={item.listid} className='items-center justify-center'>
+                                        <Button className='text-center text-zinc-800 text-lg w-full hover:!bg-red-700' type='primary' onClick={() => showModal(thisItem)} >
+                                            {item.itemname}
+                                        </Button>
+                                    </li>
+                                )
+                            }
+                        })
+                    }
+                </ul>
+                {(!isUser) ?
+                    <Modal
+                        width='40em'
+                        open={open}
+                        title={<h1 className={itemDetails?.ispurchased ? 'text-zinc-400 text-center text-3xl' : 'text-center text-3xl'}>{itemDetails?.itemname}</h1>}
+                        onCancel={handleCancel}
+                        className={itemDetails?.ispurchased && 'text-zinc-400'}
+                        footer={[
+                            <Flex wrap='no-wrap justify-between w-full'>
+                                {itemDetails?.ispurchased ?
+                                    <h2 className='text-xl text-center'>This item has already been purchased.</h2>
+                                    : <>
                                         <Button
                                             key='link'
                                             href={itemDetails?.itemlink}
                                             type='primary'
-                                            className='bg-green-500 hover:!bg-red-700'
+                                            className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700'
                                         >
                                             Purchase Here
                                         </Button>
-                                </Flex>
-                            ]}
-                        >
-                            <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
-                        </Modal>
-                    }
+                                        <Button key='submit' type='primary' className='bg-green-700 hover:!bg-zinc-50 hover:!text-green-700 hover:!border-green-700' onClick={handlePurchase}>
+                                            Already Purchased?
+                                        </Button>
+                                    </>
+                                }
+                            </Flex>
+                        ]}
+                    >
+                        <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
+                    </Modal>
+                    :
+                    <Modal
+                        width='40em'
+                        open={open}
+                        title={<h1 className='text-center text-3xl'>{itemDetails?.itemname}</h1>}
+                        onCancel={handleCancel}
+                        footer={[
+                            <Flex wrap='no-wrap justify-between w-full' gap='small'>
+                                <Button
+                                    key='link'
+                                    href={itemDetails?.itemlink}
+                                    type='primary'
+                                    className='bg-green-500 hover:!bg-red-700'
+                                >
+                                    Purchase Here
+                                </Button>
+                            </Flex>
+                        ]}
+                    >
+                        <h2 className='text-center text-lg'>Price: ${itemDetails?.itemprice}</h2>
+                    </Modal>
+                }
             </section>
         </main>
     )
