@@ -30,10 +30,8 @@ export default function AddItem() {
             body: JSON.stringify(formData),
         })
             .then(res => res.json())
-            .then(setWishlist)
+            .then((items)=>{setWishlist(items); route.push('/dashboard')})
             .catch(alert)
-
-        route.push('/dashboard')
     }
 
     return (
