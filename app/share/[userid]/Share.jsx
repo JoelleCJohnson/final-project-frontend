@@ -31,25 +31,16 @@ export default function Share({ userid }) {
         setIsUser(decodedToken == userid)
     }, [userid, token])
 
-    const showModal = async (thisItem) => {
-        await setItemDetails(thisItem);
-        setOpen(true)
-    };
-
-    const handleCancel = () => {
-        setOpen(false);
-    };
-
     const handlePurchase = (item) => {
         const itemData = {
             id: item.listid
         }
-
-        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${itemDetails.listid}`, {
+        console.log(item)
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${userid}/${item.listid}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'mode': 'no-cors',
+                // 'mode': 'no-cors',
             },
             body: JSON.stringify(itemData)
         })
@@ -71,7 +62,6 @@ export default function Share({ userid }) {
                     <h2>Loading...</h2>
                     :
                     friendsItems.map((item) => {
-                        const thisItem = item
                         if (!isUser) {
                             if (item.ispurchased === false) {
                                 return (

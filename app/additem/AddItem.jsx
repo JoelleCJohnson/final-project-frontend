@@ -3,10 +3,13 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
 import { ItemContext } from '@/context/ItemsContext'
 import { UserContext } from '@/context/UserContext'
 import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function AddItem() {
     const { setWishlist } = useContext(ItemContext)
     const { token } = useContext(UserContext)
+
+    const route = useRouter()
 
     const handleAddItem = (e) => {
         e.preventDefault()
@@ -21,7 +24,7 @@ export default function AddItem() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'mode': 'no-cors',
+                // 'mode': 'no-cors',
                 Authorization: token
             },
             body: JSON.stringify(formData),
@@ -30,6 +33,7 @@ export default function AddItem() {
             .then(setWishlist)
             .catch(alert)
 
+        route.push('/dashboard')
     }
 
     return (

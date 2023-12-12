@@ -4,20 +4,18 @@ import { useContext, useEffect, useState, React } from 'react'
 import { ItemContext } from '@/context/ItemsContext'
 import { useRouter, usePathname } from 'next/navigation'
 import { UserContext } from '@/context/UserContext'
-import { Button, Modal, Flex } from 'antd'
 import { CopyOutlined } from '@ant-design/icons'
 
 
 export default function DisplayWishlist() {
 
-    const { wishlist, setWishlist, setItemDetails, itemDetails } = useContext(ItemContext)
+    const { wishlist, setWishlist, itemDetails, setItemDetails } = useContext(ItemContext)
     const { token } = useContext(UserContext)
 
-    const [open, setOpen] = useState(false)
+    // const [open, setOpen] = useState(false)
 
     const route = useRouter()
     const pathname = usePathname()
-
 
     useEffect(() => {
         if (!token) return
@@ -33,32 +31,18 @@ export default function DisplayWishlist() {
             .catch(console.error)
     }, [token])
 
-    const showModal = async (thisItem) => {
-        await setItemDetails(thisItem);
-        setOpen(true)
-    };
-
-    const handleCancel = () => {
-        setOpen(false);
-    };
-
-    const deleteButton = () => {
-        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${itemDetails.listid}`, {
+    const deleteButton = async (item) => {
+        
+        fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${item.listid}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
                 Authorization: token
-            }
+            },
         })
             .then(res => res.json())
             .then(setWishlist)
             .catch(console.error)
-    }
-
-    const handleShareList = () => {
-        const decoded = jwt.decode(token)
-        const { userid } = decoded
-        route.push(`/share/${userid}`)
     }
 
     return (
@@ -87,6 +71,7 @@ export default function DisplayWishlist() {
                         :
                         wishlist.map((item) => {
                             const thisItem = item
+                            console.log(thisItem)
                             return (
                                 <li key={item.listid} className='flex justify-between content-center items-center rounded-md sm:w-96 flex flex-row text-center text-md space-x-4 border border-red-500 border-1 p-2 m-2 bg-zinc-50 shadow' type='primary' >
                                     <div className='w-1/4'>
@@ -98,7 +83,7 @@ export default function DisplayWishlist() {
                                     <a className='text-blue-500 underline rounded-xl hover:!text-green-700 p-1' target='_blank' href={item?.itemlink}>
                                         Buy
                                     </a>
-                                    <button className='text-red-700 underline rounded-xl hover:!text-red-700 p-1' onClick={deleteButton}>
+                                    <button className='text-red-700 underline rounded-xl hover:!text-red-700 p-1' onClick={() => deleteButton(item)} >
                                         Delete
                                     </button>
                                 </li>
