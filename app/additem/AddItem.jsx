@@ -41,7 +41,7 @@ export default function AddItem() {
 
             <section className='gift-box h-screen min-w-max md:w-1/2 sm:block hidden min-w-max object-fill'></section>
 
-            <form className='m-24 w-1/2 justify-center content-center items-center min-w-max sm:max-w-fit sm:w-1/4' onSubmit={handleAddItem}>
+            <form className='m-24 w-1/2 justify-center content-center items-center sm:min-w-max min-w-fit sm:max-w-fit sm:w-1/4' onSubmit={handleAddItem}>
                 <div className='mx-auto max-w-lg text-center'>
                     <h2 className='text-2xl font-bold sm:text-3xl mb-4'>Add an Item to Your Wishlist</h2>
                 </div>

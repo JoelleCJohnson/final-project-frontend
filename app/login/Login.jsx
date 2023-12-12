@@ -49,7 +49,7 @@ export default function Login() {
     return (
         <main className='flex justify-around lg:ml-0 lg:justify-between w-screen h-auto bg-zinc-50'>
 
-            <form className='m-24 w-1/2 min-w-max content-center justify-center items-center sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
+            <form className='m-24 w-1/2 sm:min-w-max min-w-fit content-center justify-center items-center sm:max-w-fit sm:w-1/4' onSubmit={handleFormSubmit}>
                 <div className='mx-auto max-w-lg text-center justify-center'>
                     <div className='flex justify-center w-fill w-3/4'>
                         <img src='/RedWishLily.png' className='w-1/2 ml-28' alt='WishLily logo written in script' />
