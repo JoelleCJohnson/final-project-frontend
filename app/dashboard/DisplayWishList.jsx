@@ -31,7 +31,7 @@ export default function DisplayWishlist() {
             .catch(console.error)
     }, [token])
 
-    const deleteButton = async (item) => {
+    const deleteButton = (item) => {
         
         fetch(`https://holiday-wishlist-jj.ue.r.appspot.com/dashboard/${item.listid}`, {
             method: 'DELETE',
